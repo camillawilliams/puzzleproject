@@ -31,6 +31,9 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
+						{/* <Route>
+							<Card />
+						</Route> */}
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
