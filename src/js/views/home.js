@@ -1,18 +1,21 @@
 import React from "react";
 import "../../styles/home.scss";
-import CardDeck from "react-bootstrap/CardDeck";
+import { CardRow } from "../component/cards";
 //import { CardDeck } from "./cardDeck";
 
 export const Home = () => (
-	<div className="jumbotron jumbotron-fluid">
-		<div className="container">
-			<h1 className="display-2">PUZZLED?</h1>
-			<h2 className="display-4">
-				SIGN IN FOR THE FUN TO BEGIN! &nbsp;
-				<i className="fas fa-puzzle-piece" />
-			</h2>
-			<p className="lead" />
+	<div>
+		<div className="jumbotron jumbotron-fluid">
+			<div className="container">
+				<h1 className="display-2">PUZZLED?</h1>
+				<h2 className="display-4">
+					SIGN IN FOR THE FUN TO BEGIN! &nbsp;
+					<i className="fas fa-puzzle-piece" />
+				</h2>
+				<p className="lead" />
+			</div>
 		</div>
+		<CardRow />
 	</div>
 );
 
