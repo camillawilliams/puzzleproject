@@ -7,7 +7,7 @@ import { Puzzles } from "./views/puzzles";
 import { Singlepuzzle } from "./views/singlepuzzle";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { MyNavbar } from "./component/mynavbar";
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -20,7 +20,7 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					<MyNavbar />
 					<Switch>
 						<Route exact path="/">
 							<Home />
@@ -31,9 +31,6 @@ const Layout = () => {
 						<Route exact path="/singlepuzzle/:theid">
 							<Singlepuzzle />
 						</Route>
-						{/* <Route exact path="/">
-							<Card />
-						</Route> */}
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

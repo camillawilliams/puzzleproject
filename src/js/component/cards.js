@@ -34,3 +34,5 @@ CardRow.propTypes = {
 	cardData: PropTypes.array.isRequired,
 	category: PropTypes.string.isRequired
 };
+
+export default CardRow;

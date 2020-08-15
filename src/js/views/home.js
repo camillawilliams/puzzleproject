@@ -1,28 +1,25 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+//import React, { useContext } from "react";
 import "../../styles/home.scss";
 import { CardRow } from "../component/cards";
-//import { CardDeck } from "./cardDeck";
+import { HomeJumbo } from "../component/homejumbo";
+import { Context } from "../store/appContext";
 
-export const Home = () => (
-	<div>
-		<div className="jumbotron jumbotron-fluid">
+export const Home = () => {
+	const { store, actions } = useContext(Context);
+
+	return (
+		<div>
+			<div>
+				<HomeJumbo />
+			</div>
 			<div className="container">
-				<h1 className="display-2">PUZZLED?</h1>
-				<h2 className="display-4">
-					SIGN IN FOR THE FUN TO BEGIN! &nbsp;
-					<i className="fas fa-puzzle-piece" />
-				</h2>
-				<p className="lead" />
+				<CardRow cardData={store.puzzles} category="Category" />
 			</div>
 		</div>
-		return (
-		<div className="container">
-			<CardRow cardData={store.puzzles} category="Nature" />
-		</div>
-		)
-	</div>
-);
-
+	);
+};
 // 	return (
 // 		<div className="card">
 // 			{card.map((card, index) => {

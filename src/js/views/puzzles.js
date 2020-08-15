@@ -5,6 +5,6 @@ import { CardRow } from "../component/cards";
 
 export const Puzzles = () => (
 	<div className="text-center mt-5">
-		<CardRow />
+		<CardRow cardData={store.puzzles} category="Category" />
 	</div>
 );
