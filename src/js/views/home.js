@@ -15,40 +15,13 @@ export const Home = () => (
 				<p className="lead" />
 			</div>
 		</div>
-		<CardRow />
+		return (
+		<div className="container">
+			<CardRow cardData={store.puzzles} category="Nature" />
+		</div>
+		)
 	</div>
 );
-
-// const card = [
-// 	{
-// 		image: "https://via.placeholder.com/300",
-// 		title: "My card",
-// 		body: "Lorem ipsum dolor sit amet, consectrtur adipicing elit. Nulla rutrum in metus quis pellentesque.",
-// 		buttonText: "View",
-// 		url: "Find out More!"
-// 	},
-// 	{
-// 		image: "https://via.placeholder.com/300",
-// 		title: "My card",
-// 		body: "Lorem ipsum dolor sit amet, consectrtur adipicing elit. Nulla rutrum in metus quis pellentesque.",
-// 		buttonText: "View",
-// 		url: "Find out More!"
-// 	},
-// 	{
-// 		image: "https://via.placeholder.com/300",
-// 		title: "My card",
-// 		body: "Lorem ipsum dolor sit amet, consectrtur adipicing elit. Nulla rutrum in metus quis pellentesque.",
-// 		buttonText: "View",
-// 		url: "Find out More!"
-// 	},
-// 	{
-// 		image: "https://via.placeholder.com/300",
-// 		title: "My card",
-// 		body: "Lorem ipsum dolor sit amet, consectrtur adipicing elit. Nulla rutrum in metus quis pellentesque.",
-// 		buttonText: "View",
-// 		url: "Find out More!"
-// 	}
-// ];
 
 // 	return (
 // 		<div className="card">
