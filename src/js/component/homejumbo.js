@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Jumbotron";
 
 export const HomeJumbo = () => (
 	<Jumbotron fluid>
-		<Container>
+		<Container className="Max-width 50%">
 			<h1 className="display-2">PUZZLED?</h1>
 			<h2 className="display-4">
 				SIGN IN FOR THE FUN TO BEGIN! &nbsp;

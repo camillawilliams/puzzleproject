@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 // //import { Context } from "../store/appContext";
 
 export const CardRow = () => (
-	<CardDeck>
+	<CardDeck className="CardDeck-flex">
 		<Card>
 			<Card.Img variant="top" src="holder.js/100px160" />
 			<Card.Body>
