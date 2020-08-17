@@ -10,7 +10,7 @@ export const CardRow = props => {
 	return (
 		<div>
 			<h2 style={{ textAlign: "left" }}>{category}</h2>
-			<CardDeck style={{ height: "330px" }}>
+			<CardDeck style={{ height: "300px" }}>
 				{cardData.map((item, index) => {
 					return (
 						<Card key={index}>
@@ -19,9 +19,6 @@ export const CardRow = props => {
 								<Card.Title>{item.title}</Card.Title>
 								<Card.Text>{item.text}</Card.Text>
 							</Card.Body>
-							{/* <Card.Footer>
-				<small className="text-muted">Last updated 3 mins ago</small>
-			</Card.Footer> */}
 						</Card>
 					);
 				})}
