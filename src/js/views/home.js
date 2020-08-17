@@ -15,7 +15,7 @@ export const Home = () => {
 				<HomeJumbo />
 			</div>
 			<div className="container">
-				<CardRow cardData={store.puzzles} category="Category" />
+				<CardRow cardData={store.puzzles} />
 			</div>
 		</div>
 	);
