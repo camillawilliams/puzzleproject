@@ -1,51 +1,25 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+//import React, { useContext } from "react";
 import "../../styles/home.scss";
 import { CardRow } from "../component/cards";
 import { HomeJumbo } from "../component/homejumbo";
+import { Context } from "../store/appContext";
 
-export const Home = () => (
-	<div>
+export const Home = () => {
+	const { store, actions } = useContext(Context);
+
+	return (
 		<div>
-			<HomeJumbo />
+			<div>
+				<HomeJumbo />
+			</div>
+			<div className="container">
+				<CardRow cardData={store.puzzles} category="Category" />
+			</div>
 		</div>
-
-		<div>
-			<CardRow />
-		</div>
-	</div>
-);
-
-// const card = [
-// 	{
-// 		image: "https://via.placeholder.com/300",
-// 		title: "My card",
-// 		body: "Lorem ipsum dolor sit amet, consectrtur adipicing elit. Nulla rutrum in metus quis pellentesque.",
-// 		buttonText: "View",
-// 		url: "Find out More!"
-// 	},
-// 	{
-// 		image: "https://via.placeholder.com/300",
-// 		title: "My card",
-// 		body: "Lorem ipsum dolor sit amet, consectrtur adipicing elit. Nulla rutrum in metus quis pellentesque.",
-// 		buttonText: "View",
-// 		url: "Find out More!"
-// 	},
-// 	{
-// 		image: "https://via.placeholder.com/300",
-// 		title: "My card",
-// 		body: "Lorem ipsum dolor sit amet, consectrtur adipicing elit. Nulla rutrum in metus quis pellentesque.",
-// 		buttonText: "View",
-// 		url: "Find out More!"
-// 	},
-// 	{
-// 		image: "https://via.placeholder.com/300",
-// 		title: "My card",
-// 		body: "Lorem ipsum dolor sit amet, consectrtur adipicing elit. Nulla rutrum in metus quis pellentesque.",
-// 		buttonText: "View",
-// 		url: "Find out More!"
-// 	}
-// ];
-
+	);
+};
 // 	return (
 // 		<div className="card">
 // 			{card.map((card, index) => {

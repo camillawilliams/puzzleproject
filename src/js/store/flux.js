@@ -1,16 +1,30 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			puzzles: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
+					img: "https://via.placeholder.com/300",
+					title: "My card",
+					text:
+						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				},
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					img: "https://via.placeholder.com/300",
+					title: "My card",
+					text:
+						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+				},
+				{
+					img: "https://via.placeholder.com/300",
+					title: "My card",
+					text:
+						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+				},
+				{
+					img: "https://via.placeholder.com/300",
+					title: "My card",
+					text:
+						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				}
 			]
 		},

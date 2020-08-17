@@ -31,9 +31,6 @@ const Layout = () => {
 						<Route exact path="/singlepuzzle/:theid">
 							<Singlepuzzle />
 						</Route>
-						{/* <Route exact path="/">
-							<Card />
-						</Route> */}
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
