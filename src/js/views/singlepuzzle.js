@@ -34,11 +34,6 @@ export const Singlepuzzle = props => {
 		<Container>
 			<Card>
 				<Card.Body>
-<<<<<<< HEAD
-					<Card.Title>Name</Card.Title>
-=======
-					{/* <Card.Title>Name</Card.Title> */}
->>>>>>> b394362e6ca357d0c4da25964188ab8d7089c293
 					<Card.Title>{store.puzzles[id].title}</Card.Title>
 					{/* why does the above not work? */}
 					<Row>
@@ -48,7 +43,15 @@ export const Singlepuzzle = props => {
 						</Col>
 						{/* why do these columns not work. I want image on left side  */}
 						<Col>
-							<Card.Text>{store.puzzles[id].text}</Card.Text>
+							<Card.Text>
+								Description: {store.puzzles[id].text}
+								<br />
+								Ages: {store.puzzles[id].ages}
+								<br />
+								No. pieces: {store.puzzles[id].pieces}
+								<br />
+								Theme: {store.puzzles[id].theme}{" "}
+							</Card.Text>
 							<Button variant="primary">Swap It!</Button>
 						</Col>
 					</Row>
@@ -63,5 +66,6 @@ Singlepuzzle.propTypes = {
 	title: PropTypes.string,
 	data: PropTypes.string,
 	pieces: PropTypes.number,
-	ages: PropTypes.string
+	ages: PropTypes.string,
+	theme: PropTypes.string
 };

@@ -19,7 +19,13 @@ export const CardRow = props => {
 							<Card.Img variant="top" src={item.img} />
 							<Card.Body>
 								<Card.Title>{item.title}</Card.Title>
-								<Card.Text>{item.text}</Card.Text>
+								<Card.Text>
+									Description: {item.text}
+									<br />
+									No. Pieces: {item.pieces}
+									<br />
+									Ages: {item.ages}
+								</Card.Text>
 								<Button variant="primary">
 									<Link to={`/singlepuzzle/${index}`}>See More</Link>
 								</Button>
@@ -36,7 +42,8 @@ CardRow.propTypes = {
 	category: PropTypes.string.isRequired,
 	title: PropTypes.string,
 	data: PropTypes.string,
-	pieces: PropTypes.number
+	pieces: PropTypes.number,
+	ages: PropTypes.string
 };
 
 export default CardRow;

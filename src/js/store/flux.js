@@ -4,25 +4,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			puzzles: [
 				{
 					img: "https://via.placeholder.com/300",
-					title: "My card",
+					pieces: 750,
+					title: "Puzzle 1",
+					ages: "12+",
+					theme: "animals",
 					text:
 						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				},
 				{
 					img: "https://via.placeholder.com/300",
-					title: "My card",
+					title: "Puzzle 2",
+					pieces: 450,
+					ages: "6+",
+					theme: "floral",
 					text:
 						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				},
 				{
 					img: "https://via.placeholder.com/300",
-					title: "My card",
+					title: "Puzzle 3",
+					pieces: 650,
+					theme: "I Spy",
+					ages: "3+",
 					text:
 						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				},
 				{
 					img: "https://via.placeholder.com/300",
-					title: "My card",
+					title: "Puzzle 4",
+					pieces: 1000,
+					theme: "abstract",
+					ages: "4+",
 					text:
 						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				}
