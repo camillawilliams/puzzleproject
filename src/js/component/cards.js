@@ -35,7 +35,8 @@ CardRow.propTypes = {
 	cardData: PropTypes.array.isRequired,
 	category: PropTypes.string.isRequired,
 	title: PropTypes.string,
-	data: PropTypes.string
+	data: PropTypes.string,
+	pieces: PropTypes.number
 };
 
 export default CardRow;

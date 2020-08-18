@@ -12,7 +12,7 @@ import Pagination from "react-bootstrap/Pagination";
 export const Singlepuzzle = props => {
 	const { title, data } = props;
 	const { store, actions } = useContext(Context);
-	const params = useParams();
+	const { id } = useParams();
 	let active = 1;
 	let items = [];
 	for (let number = 1; number <= 5; number++) {
@@ -35,7 +35,7 @@ export const Singlepuzzle = props => {
 			<Card>
 				<Card.Body>
 					<Card.Title>Name</Card.Title>
-					{/* <Card.Title>{store.puzzles[params.index].title}</Card.Title> */}
+					<Card.Title>{store.puzzles[id].title}</Card.Title>
 					{/* why does the above not work? */}
 					<Row>
 						<Col>
@@ -69,5 +69,7 @@ export const Singlepuzzle = props => {
 Singlepuzzle.propTypes = {
 	match: PropTypes.object,
 	title: PropTypes.string,
-	data: PropTypes.string
+	data: PropTypes.string,
+	pieces: PropTypes.number,
+	ages: PropTypes.string
 };
