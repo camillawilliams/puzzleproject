@@ -57,7 +57,7 @@ export const Singlepuzzle = props => {
 								venenatis urna cursus eget nunc scelerisque. Morbi enim nunc faucibus a pellentesque sit
 								amet porttitor eget.
 							</Card.Text>
-							<Button variant="primary">Go somewhere</Button>
+							<Button variant="primary">Swap It!</Button>
 						</Col>
 					</Row>
 				</Card.Body>
