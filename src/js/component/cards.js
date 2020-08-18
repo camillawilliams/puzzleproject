@@ -26,7 +26,6 @@ export const CardRow = props => {
 		</div>
 	);
 };
-
 CardRow.propTypes = {
 	cardData: PropTypes.array.isRequired,
 	category: PropTypes.string.isRequired

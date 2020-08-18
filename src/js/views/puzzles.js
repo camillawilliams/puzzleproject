@@ -7,8 +7,13 @@ import { Context } from "../store/appContext";
 export const Puzzles = props => {
 	const { store, actions } = useContext(Context);
 	return (
-		<div className="text-center mt-5">
-			<CardRow cardData={store.puzzles} category="Category" />
+		<div>
+			<div className="container">
+				<CardRow cardData={store.puzzles} category="Category" />
+			</div>
+			<div className="container">
+				<CardRow cardData={store.puzzles} category="Category" />
+			</div>
 		</div>
 	);
 };
