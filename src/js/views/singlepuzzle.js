@@ -34,7 +34,11 @@ export const Singlepuzzle = props => {
 		<Container>
 			<Card>
 				<Card.Body>
+<<<<<<< HEAD
 					<Card.Title>Name</Card.Title>
+=======
+					{/* <Card.Title>Name</Card.Title> */}
+>>>>>>> b394362e6ca357d0c4da25964188ab8d7089c293
 					<Card.Title>{store.puzzles[id].title}</Card.Title>
 					{/* why does the above not work? */}
 					<Row>
@@ -44,19 +48,7 @@ export const Singlepuzzle = props => {
 						</Col>
 						{/* why do these columns not work. I want image on left side  */}
 						<Col>
-							<Card.Text>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua. A scelerisque purus semper eget duis at
-								tellus. Dignissim convallis aenean et tortor at risus viverra adipiscing. Adipiscing
-								commodo elit at imperdiet dui accumsan sit amet. Lectus mauris ultrices eros in cursus
-								turpis. Pulvinar sapien et ligula ullamcorper malesuada. Enim ut tellus elementum
-								sagittis vitae et. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque
-								elit. Ipsum suspendisse ultrices gravida dictum. Euismod in pellentesque massa placerat
-								duis ultricies. Scelerisque purus semper eget duis. Porta nibh venenatis cras sed.
-								Tristique nulla aliquet enim tortor at auctor urna nunc id. Dignissim enim sit amet
-								venenatis urna cursus eget nunc scelerisque. Morbi enim nunc faucibus a pellentesque sit
-								amet porttitor eget.
-							</Card.Text>
+							<Card.Text>{store.puzzles[id].text}</Card.Text>
 							<Button variant="primary">Swap It!</Button>
 						</Col>
 					</Row>
