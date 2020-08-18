@@ -10,7 +10,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div>
+		<div className="container">
 			<div>
 				<HomeJumbo />
 			</div>
