@@ -1,9 +1,11 @@
 import React from "react";
-// //import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import CardDeck from "react-bootstrap/CardDeck";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
-// //import { Context } from "../store/appContext";
+import { Context } from "../store/appContext";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 export const CardRow = props => {
 	const { cardData, category } = props;
@@ -18,6 +20,9 @@ export const CardRow = props => {
 							<Card.Body>
 								<Card.Title>{item.title}</Card.Title>
 								<Card.Text>{item.text}</Card.Text>
+								<Button variant="primary">
+									<Link to={`/singlepuzzle/${index}`}>See More</Link>
+								</Button>
 							</Card.Body>
 						</Card>
 					);
@@ -29,7 +34,9 @@ export const CardRow = props => {
 
 CardRow.propTypes = {
 	cardData: PropTypes.array.isRequired,
-	category: PropTypes.string.isRequired
+	category: PropTypes.string.isRequired,
+	title: PropTypes.string,
+	data: PropTypes.string
 };
 
 export default CardRow;

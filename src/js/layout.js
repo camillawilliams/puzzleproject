@@ -28,7 +28,7 @@ const Layout = () => {
 						<Route exact path="/puzzles">
 							<Puzzles />
 						</Route>
-						<Route exact path="/singlepuzzle/:theid">
+						<Route exact path="/singlepuzzle/:id">
 							<Singlepuzzle />
 						</Route>
 						<Route>
