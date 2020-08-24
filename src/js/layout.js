@@ -8,6 +8,7 @@ import { Singlepuzzle } from "./views/singlepuzzle";
 import injectContext from "./store/appContext";
 
 import { MyNavbar } from "./component/mynavbar";
+import { Login } from "./views/login";
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -31,6 +32,11 @@ const Layout = () => {
 						<Route exact path="/singlepuzzle/:id">
 							<Singlepuzzle />
 						</Route>
+
+						<Route exact path="/login">
+							<Login />
+						</Route>
+
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
