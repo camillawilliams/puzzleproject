@@ -26,7 +26,8 @@ export const MyNavbar = () => (
 				<NavDropdown title="Account" id="basic-nav-dropdown">
 					<NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
 					<NavDropdown.Item href="#action/3.2">Track Your Order</NavDropdown.Item>
-					<NavDropdown.Item href="#action/3.2">Browse Puzzles</NavDropdown.Item>
+					<NavDropdown.Item href="/puzzles">Browse Puzzles</NavDropdown.Item>
+					<NavDropdown.Item href="/upload">Upload View</NavDropdown.Item>
 					<NavDropdown.Item href="#action/3.3">Contact Us</NavDropdown.Item>
 				</NavDropdown>
 			</Navbar.Collapse>

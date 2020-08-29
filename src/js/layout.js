@@ -31,6 +31,9 @@ const Layout = () => {
 						<Route exact path="/singlepuzzle/:id">
 							<Singlepuzzle />
 						</Route>
+						<Route exact path="/upload">
+							><Upload />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

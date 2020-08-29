@@ -6,12 +6,14 @@ import { Context } from "../store/appContext";
 
 export const Puzzles = props => {
 	const { store, actions } = useContext(Context);
+
 	return (
 		<div>
-			<div className="container">
+			<div className="container d-flex justify-content-center">
 				<CardRow cardData={store.puzzles} category="Category" />
 			</div>
-			<div className="container">
+
+			<div className="cool2-container d-flex justify-content-center">
 				<CardRow cardData={store.puzzles} category="Category" />
 			</div>
 		</div>
