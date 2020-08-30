@@ -29,7 +29,9 @@ export const MyNavbar = () => (
 
 					<NavDropdown.Item href="#action/3.2">Track Your Order</NavDropdown.Item>
 					<NavDropdown.Item href="#action/3.2">Browse Puzzles</NavDropdown.Item>
-					<NavDropdown.Item href="#action/3.3">Contact Us</NavDropdown.Item>
+					<NavDropdown.Item>
+						<Link to="/report">Contact Us</Link>
+					</NavDropdown.Item>
 				</NavDropdown>
 			</Navbar.Collapse>
 			<Nav.Link href="#link">
