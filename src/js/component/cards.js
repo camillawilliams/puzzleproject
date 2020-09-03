@@ -26,7 +26,7 @@ export const CardRow = props => {
 									<br />
 									Ages: {item.ages}
 								</Card.Text>
-								<Button variant="primary">
+								<Button variant="success">
 									<Link to={`/singlepuzzle/${index}`}>See More</Link>
 								</Button>
 							</Card.Body>

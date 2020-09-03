@@ -18,7 +18,7 @@ export const Login = () => (
 		<Form.Group controlId="formBasicCheckbox">
 			<Form.Check type="checkbox" label="Remember me" />
 		</Form.Group>
-		<Button variant="primary" type="submit">
+		<Button variant="success" type="submit">
 			Sign in
 		</Button>
 	</Form>

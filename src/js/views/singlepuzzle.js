@@ -57,7 +57,7 @@ export const Singlepuzzle = props => {
 								<strong>No. pieces:</strong> <p>{store.puzzles[id].pieces}</p>
 								<br />
 								<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
-								<Button variant="primary" className="text-center">
+								<Button variant="success" className="text-center">
 									Swap It!
 								</Button>
 							</Card.Text>
