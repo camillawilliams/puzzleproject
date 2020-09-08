@@ -24,7 +24,7 @@ export const MyNavbar = () => (
 				</Form>
 				<NavDropdown title="Account" id="basic-nav-dropdown">
 					<NavDropdown.Item>
-						<Link to="/login">Sign In </Link>
+						<Link to="/signin">Sign In </Link>
 					</NavDropdown.Item>
 
 					<NavDropdown.Item href="#action/3.2">Track Your Order</NavDropdown.Item>

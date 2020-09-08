@@ -8,7 +8,8 @@ import { Singlepuzzle } from "./views/singlepuzzle";
 import injectContext from "./store/appContext";
 
 import { MyNavbar } from "./component/mynavbar";
-import { Login } from "./views/login";
+import { SignIn } from "./views/signin";
+import { RegisterPage } from "./views/registerpage";
 import { Footer } from "./component/footer";
 import { Report } from "./views/report";
 
@@ -34,9 +35,13 @@ const Layout = () => {
 							<Singlepuzzle />
 						</Route>
 
-						<Route exact path="/login">
-							<Login />
+						<Route exact path="/signin">
+							<SignIn />
 						</Route>
+						<Route exact path="/registerpage">
+							<RegisterPage />
+						</Route>
+
 						<Route exact path="/report">
 							<Report />
 						</Route>
