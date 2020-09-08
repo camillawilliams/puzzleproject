@@ -38,7 +38,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					text:
 						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				}
-			]
+			],
+			shipping: [{ text: "Puzzle Swap" }]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction

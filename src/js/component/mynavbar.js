@@ -8,7 +8,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
 export const MyNavbar = () => (
-	<div className="container">
+	<div className="mynavbar mx-">
 		<Navbar bg="light" expand="lg">
 			<i className="fas fa-puzzle-piece" />
 			&nbsp;
@@ -22,9 +22,11 @@ export const MyNavbar = () => (
 					<FormControl type="text" placeholder="Search" className="mr-sm-2" />
 					<Button variant="outline-success">Search</Button>
 				</Form>
-
 				<NavDropdown title="Account" id="basic-nav-dropdown">
-					<NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
+					<NavDropdown.Item>
+						<Link to="/login">Sign In </Link>
+					</NavDropdown.Item>
+
 					<NavDropdown.Item href="#action/3.2">Track Your Order</NavDropdown.Item>
 					<NavDropdown.Item href="/puzzles">Browse Puzzles</NavDropdown.Item>
 					<NavDropdown.Item href="/upload">Upload View</NavDropdown.Item>
