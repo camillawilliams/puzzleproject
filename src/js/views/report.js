@@ -24,7 +24,7 @@ export const Report = () => (
 				Describe the issue
 			</Form.Control>
 		</Form.Group>
-		<Button variant="primary" type="submit">
+		<Button variant="success" type="submit">
 			Report
 		</Button>
 	</Form>
