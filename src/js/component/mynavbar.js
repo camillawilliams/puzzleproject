@@ -12,8 +12,9 @@ export const MyNavbar = () => (
 		<Navbar bg="light" expand="lg">
 			<i className="fas fa-puzzle-piece" />
 			&nbsp;
-			<Navbar.Brand href="#home" className="font-weight-bold">
-				PUZZLE SWAP
+			<Navbar.Brand className="font-weight-bold">
+				<Link to="/">PUZZLE SWAP</Link>
+				{/* this is messing up the formatting but previously it didn't take you anywhere if you're on another view so it needs to use Link but be styled */}
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
