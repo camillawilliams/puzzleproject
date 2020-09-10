@@ -13,7 +13,7 @@ export const MyNavbar = () => (
 			<i className="fas fa-puzzle-piece" />
 			&nbsp;
 			<Navbar.Brand href="#home" className="font-weight-bold">
-				PUZZLE SWAP
+				<Link to="/">PUZZLE SWAP</Link>
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
@@ -24,13 +24,17 @@ export const MyNavbar = () => (
 				</Form>
 				<NavDropdown title="Account" id="basic-nav-dropdown">
 					<NavDropdown.Item>
-						<Link to="/login">Sign In </Link>
+						<Link to="/signin">Sign In </Link>
 					</NavDropdown.Item>
 
 					<NavDropdown.Item href="#action/3.2">Track Your Order</NavDropdown.Item>
 					<NavDropdown.Item href="/puzzles">Browse Puzzles</NavDropdown.Item>
 					<NavDropdown.Item href="/upload">Upload View</NavDropdown.Item>
 					<NavDropdown.Item href="#action/3.3">Contact Us</NavDropdown.Item>
+					<NavDropdown.Item href="#action/3.2">Browse Puzzles</NavDropdown.Item>
+					<NavDropdown.Item>
+						<Link to="/report">Contact Us</Link>
+					</NavDropdown.Item>
 				</NavDropdown>
 			</Navbar.Collapse>
 			<Nav.Link href="#link">

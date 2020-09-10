@@ -8,10 +8,12 @@ import { Singlepuzzle } from "./views/singlepuzzle";
 import injectContext from "./store/appContext";
 
 import { MyNavbar } from "./component/mynavbar";
-import { Login } from "./views/login";
+import { SignIn } from "./views/signin";
+import { RegisterPage } from "./views/registerpage";
 import { Footer } from "./component/footer";
 import { Upload } from "./component/upload";
 import { Shipping } from "./views/shipping";
+import { Report } from "./views/report";
 
 //create your first component
 const Layout = () => {
@@ -38,8 +40,15 @@ const Layout = () => {
 							<Upload />
 						</Route>
 
-						<Route exact path="/login">
-							<Login />
+						<Route exact path="/signin">
+							<SignIn />
+						</Route>
+						<Route exact path="/registerpage">
+							<RegisterPage />
+						</Route>
+
+						<Route exact path="/report">
+							<Report />
 						</Route>
 						<Route exact path="/shipping">
 							<Shipping />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 //import React, { useContext } from "react";
 import "../../styles/home.scss";
 import { CardRow } from "../component/cards";
-import { Login } from "./login";
+import { SignIn } from "./signin";
 import { HomeJumbo } from "../component/homejumbo";
 import { Context } from "../store/appContext";
 

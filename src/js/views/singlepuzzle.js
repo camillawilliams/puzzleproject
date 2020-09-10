@@ -25,7 +25,7 @@ export const Singlepuzzle = props => {
 
 	const paginationBasic = (
 		<div>
-			<Pagination size="sm">{items}</Pagination>
+			<Pagination size="lg">{items}</Pagination>
 		</div>
 	);
 	//how to render the above inside of return
@@ -36,16 +36,35 @@ export const Singlepuzzle = props => {
 				<Card.Body>
 					{/* <Card.Title>Name</Card.Title> */}
 					<Card.Title>{store.puzzles[id].title}</Card.Title>
+					<Row className="d-flex justify-content-center">
+						<Card.Title>
+							<h2>{store.puzzles[id].title}</h2>
+						</Card.Title>
+					</Row>
 					{/* why does the above not work? */}
 					<Row>
-						<Col>
-							<Card.Img src="https://via.placeholder.com/400x250.png" />
-							{paginationBasic}
+						<Col className="text-center">
+							<Row>
+								<Card.Img src="https://via.placeholder.com/400x250.png" />
+							</Row>
+							<Row>{paginationBasic}</Row>
 						</Col>
 						{/* why do these columns not work. I want image on left side  */}
 						<Col>
 							<Card.Text>{store.puzzles[id].text}</Card.Text>
 							<Button variant="primary">Swap It!</Button>
+							<Card.Text className="text-center">
+								<strong>Description:</strong> <p>{store.puzzles[id].text}</p>
+								<br />
+								<strong>Ages:</strong> <p>{store.puzzles[id].ages}</p>
+								<br />
+								<strong>No. pieces:</strong> <p>{store.puzzles[id].pieces}</p>
+								<br />
+								<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
+								<Button variant="success" className="text-center">
+									Swap It!
+								</Button>
+							</Card.Text>
 						</Col>
 					</Row>
 				</Card.Body>
