@@ -12,7 +12,7 @@ export const MyNavbar = () => (
 		<Navbar bg="light" expand="lg">
 			<i className="fas fa-puzzle-piece" />
 			&nbsp;
-			<Navbar.Brand href="#home" className="font-weight-bold">
+			<Navbar.Brand href="#home" className="font-weight-bold text-success">
 				<Link to="/">PUZZLE SWAP</Link>
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,7 +22,7 @@ export const MyNavbar = () => (
 					<FormControl type="text" placeholder="Search" className="mr-sm-2" />
 					<Button variant="outline-success">Search</Button>
 				</Form>
-				<NavDropdown title="Account" id="basic-nav-dropdown">
+				<NavDropdown title="Menu" id="basic-nav-dropdown">
 					<NavDropdown.Item>
 						<Link to="/signin">Sign In </Link>
 					</NavDropdown.Item>

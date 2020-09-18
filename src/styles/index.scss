@@ -11,10 +11,13 @@
     height: 100%;
 }
 
-a {
-    color:green;
-}
-a:visited {
-  color: black;
+a,.nav-link {
+    color: $green;
+    &:visited { // a:visited
+        color: black;
+    }
+    &:hover {
+        color:black;
+    }
 }
 

@@ -14,6 +14,18 @@ export const RegisterPage = () => (
 			<Form.Label>Address</Form.Label>
 			<Form.Control type="address" placeholder="Address" />
 		</Form.Group>
+		<Form.Group controlId="city">
+			<Form.Label>City</Form.Label>
+			<Form.Control type="city" placeholder="City" />
+		</Form.Group>
+		<Form.Group controlId="state">
+			<Form.Label>State</Form.Label>
+			<Form.Control type="state" placeholder="State" />
+		</Form.Group>
+		<Form.Group controlId="zip">
+			<Form.Label>Zip</Form.Label>
+			<Form.Control type="zip" placeholder="Zip" />
+		</Form.Group>
 		<Form.Group controlId="email">
 			<Form.Label>Email</Form.Label>
 			<Form.Control type="email" placeholder="Email" />

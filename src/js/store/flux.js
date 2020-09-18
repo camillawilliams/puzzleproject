@@ -1,6 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
 	return {
 		store: {
+			user: {
+				loggedIn: false,
+				username: "",
+				token: ""
+			},
 			puzzles: [
 				{
 					img: "https://via.placeholder.com/300",
@@ -49,6 +55,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+			},
+			login: (username, password) => {
+				return fetch(base_url + "/login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						username: username,
+						password: password
+					})
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw new Error(resp.statusText);
+						}
+						return resp.json();
+					})
+					.then(data => {
+						let store = getStore();
+						store.user = {
+							loggedIn: true,
+							username: username,
+							token: data.jwt
+						};
+						setStore(store);
+						return true;
+					})
+					.catch(err => {
+						console.error(err);
+						return false;
+					});
 			},
 			changeColor: (index, color) => {
 				//get the store
