@@ -11,6 +11,9 @@ import { MyNavbar } from "./component/mynavbar";
 import { SignIn } from "./views/signin";
 import { RegisterPage } from "./views/registerpage";
 import { Footer } from "./component/footer";
+import { Upload } from "./component/upload";
+import { Track } from "./component/track";
+import { Shipping } from "./views/shipping";
 import { Report } from "./views/report";
 
 //create your first component
@@ -34,6 +37,9 @@ const Layout = () => {
 						<Route exact path="/singlepuzzle/:id">
 							<Singlepuzzle />
 						</Route>
+						<Route exact path="/upload">
+							<Upload />
+						</Route>
 
 						<Route exact path="/signin">
 							<SignIn />
@@ -45,7 +51,12 @@ const Layout = () => {
 						<Route exact path="/report">
 							<Report />
 						</Route>
-
+						<Route exact path="/track">
+							<Track />
+						</Route>
+						<Route exact path="/shipping">
+							<Shipping />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

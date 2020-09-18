@@ -34,6 +34,8 @@ export const Singlepuzzle = props => {
 		<Container>
 			<Card>
 				<Card.Body>
+					{/* <Card.Title>Name</Card.Title> */}
+					<Card.Title>{store.puzzles[id].title}</Card.Title>
 					<Row className="d-flex justify-content-center">
 						<Card.Title>
 							<h2>{store.puzzles[id].title}</h2>
@@ -49,6 +51,8 @@ export const Singlepuzzle = props => {
 						</Col>
 						{/* why do these columns not work. I want image on left side  */}
 						<Col>
+							<Card.Text>{store.puzzles[id].text}</Card.Text>
+							<Button variant="primary">Swap It!</Button>
 							<Card.Text className="text-center">
 								<strong>Description:</strong> <p>{store.puzzles[id].text}</p>
 								<br />
@@ -74,6 +78,5 @@ Singlepuzzle.propTypes = {
 	title: PropTypes.string,
 	data: PropTypes.string,
 	pieces: PropTypes.number,
-	ages: PropTypes.string,
-	theme: PropTypes.string
+	ages: PropTypes.string
 };

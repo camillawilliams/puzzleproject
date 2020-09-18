@@ -27,11 +27,11 @@ export const MyNavbar = () => (
 						<Link to="/signin">Sign In </Link>
 					</NavDropdown.Item>
 
-					<NavDropdown.Item href="#action/3.2">Track Your Order</NavDropdown.Item>
+					<NavDropdown.Item href="/track">Track Your Order</NavDropdown.Item>
+					<NavDropdown.Item href="/puzzles">Browse Puzzles</NavDropdown.Item>
+					<NavDropdown.Item href="/upload">Upload View</NavDropdown.Item>
+					<NavDropdown.Item href="/report">Contact Us</NavDropdown.Item>
 					<NavDropdown.Item href="#action/3.2">Browse Puzzles</NavDropdown.Item>
-					<NavDropdown.Item>
-						<Link to="/report">Contact Us</Link>
-					</NavDropdown.Item>
 				</NavDropdown>
 			</Navbar.Collapse>
 			<Nav.Link href="#link">

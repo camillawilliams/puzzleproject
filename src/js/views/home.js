@@ -21,19 +21,3 @@ export const Home = () => {
 		</div>
 	);
 };
-// 	return (
-// 		<div className="card">
-// 			{card.map((card, index) => {
-// 				return (
-// 					<Card
-// 						key={index}
-// 						image={card.image}
-// 						title={card.title}
-// 						body={card.body}
-// 						buttonText={card.buttonText}
-// 						url={card.url}
-// 					/>
-// 				);
-// 			})}
-// 		</div>
-// 	);
