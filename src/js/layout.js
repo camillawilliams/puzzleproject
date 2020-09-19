@@ -61,6 +61,9 @@ const Layout = () => {
 						<Route exact path="/swap">
 							<Swap />
 						</Route>
+						<Route exact path="/shipping">
+							<Shipping />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

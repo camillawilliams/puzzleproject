@@ -32,6 +32,7 @@ export const MyNavbar = () => (
 					<NavDropdown.Item href="/upload">Upload View</NavDropdown.Item>
 					<NavDropdown.Item href="/report">Contact Us</NavDropdown.Item>
 					<NavDropdown.Item href="/swap/">Swap Puzzles</NavDropdown.Item>
+					<NavDropdown.Item href="/shipping/">Shipping</NavDropdown.Item>
 				</NavDropdown>
 			</Navbar.Collapse>
 			<Nav.Link href="#link">

@@ -14,6 +14,7 @@ export const Swap = props => {
 	return (
 		<div className="container">
 			<h1>Enter Your Puzzle Info For Swap</h1>
+			<h4>Upload Puzzle</h4>
 			<Form>
 				<Form>
 					<Form.Group controlId="formGroupEmail">

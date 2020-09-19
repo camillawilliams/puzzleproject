@@ -11,6 +11,8 @@ export const Shipping = props => {
 
 	return (
 		<div className="container">
+			<h1>Puzzle Swap</h1>
+			<h6>cart</h6>
 			<Form>
 				<Form.Row>
 					<Form.Group as={Col} controlId="formGridEmail">
