@@ -14,6 +14,7 @@ import { Footer } from "./component/footer";
 import { Upload } from "./component/upload";
 import { Track } from "./component/track";
 import { Shipping } from "./views/shipping";
+import { Swap } from "./views/swap";
 import { Report } from "./views/report";
 
 //create your first component
@@ -56,6 +57,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/shipping">
 							<Shipping />
+						</Route>
+						<Route exact path="/swap">
+							<Swap />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
