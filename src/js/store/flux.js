@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-cf0fbf96-ec01-44fb-a28d-62befc096805.ws-us02.gitpod.io";
+	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
 	return {
 		store: {
 			user: {
@@ -58,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				*/
 			},
 			signin: (username, password) => {
-				return fetch(base_url + "/signin", {
+				return fetch(base_url + "/login", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
