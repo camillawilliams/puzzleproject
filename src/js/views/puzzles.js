@@ -9,17 +9,15 @@ export const Puzzles = props => {
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
-	const getRows = () => {
-		return (
-			<React.Fragment>
-				<div className="container">
-					<CardRow cardData={store.puzzles} category="Category" />
-				</div>
-				<div className="container">
-					<CardRow cardData={store.puzzles} category="Category" />
-				</div>
-			</React.Fragment>
-		);
-	};
-	return <div>{store.user.loggedIn ? getRows() : history.push("/signin")}</div>;
+	return (
+		<div>
+			<div className="container d-flex justify-content-center">
+				<CardRow cardData={store.puzzles} category="Category" />
+			</div>
+
+			<div className="cool2-container d-flex justify-content-center">
+				<CardRow cardData={store.puzzles} category="Category" />
+			</div>
+		</div>
+	);
 };
