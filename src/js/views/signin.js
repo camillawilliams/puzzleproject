@@ -14,7 +14,7 @@ export const SignIn = () => {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		if (username !== "" && password !== "") {
-			let resp = await actions.login(username, password);
+			let resp = await actions.signin(username, password);
 			console.log(resp);
 			if (resp) {
 				history.push("/puzzles");
