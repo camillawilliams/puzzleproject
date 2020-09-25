@@ -49,62 +49,10 @@ export const Swap = props => {
 						<Form.Label>User</Form.Label>
 						<Form.Control type="User" placeholder="User" />
 					</Form.Group>
+					<Button variant="primary" type="submit">
+						Submit
+					</Button>
 				</Form>
-				{/* <Form.Row>
-					<Form.Group as={Col} controlId="formGridEmail">
-						<Form.Label>Email</Form.Label>
-						<Form.Control type="Name Of Puzzle" placeholder="Enter Name Of Puzzle" />
-					</Form.Group>
-				</Form.Row>
-				<Form.Row>
-					<Form.Group as={Col} controlId="formGridEmail">
-						<Form.Label>First Name</Form.Label>
-						<Form.Control type="email" placeholder="Enter First Name" />
-					</Form.Group>
-
-					<Form.Group as={Col} controlId="formGridPassword">
-						<Form.Label>Last Name</Form.Label>
-						<Form.Control type="password" placeholder="Enter Last Name" />
-					</Form.Group>
-				</Form.Row>
-
-				<Form.Group controlId="formGridAddress1">
-					<Form.Label>Address</Form.Label>
-					<Form.Control placeholder="1234 Main St" />
-				</Form.Group>
-
-				<Form.Group controlId="formGridAddress2">
-					<Form.Label>Address 2</Form.Label>
-					<Form.Control placeholder="Apartment, studio, or floor" />
-				</Form.Group>
-
-				<Form.Row>
-					<Form.Group as={Col} controlId="formGridCity">
-						<Form.Label>City</Form.Label>
-						<Form.Control />
-					</Form.Group>
-
-					<Form.Group as={Col} controlId="formGridState">
-						<Form.Label>State</Form.Label>
-						<Form.Control as="select" defaultValue="Choose...">
-							<option>Choose...</option>
-							<option>Alabama</option>
-						</Form.Control>
-					</Form.Group>
-
-					<Form.Group as={Col} controlId="formGridZip">
-						<Form.Label>Zip</Form.Label>
-						<Form.Control />
-					</Form.Group>
-				</Form.Row>
-
-				<Form.Group id="formGridCheckbox">
-					<Form.Check type="checkbox" label="Return to cart" />
-				</Form.Group>
-
-				<Button variant="primary" type="submit">
-					Continue to shipping method
-				</Button> */}
 			</Form>
 		</div>
 	);

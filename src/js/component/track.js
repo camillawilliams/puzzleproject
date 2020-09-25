@@ -16,3 +16,6 @@ export const Track = props => {
 		</div>
 	);
 };
+
+// example from class
+//

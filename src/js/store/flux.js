@@ -1,11 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
+	const base_url = "https://3000-cf0fbf96-ec01-44fb-a28d-62befc096805.ws-us02.gitpod.io/";
 	return {
 		store: {
 			user: {
 				loggedIn: false,
 				username: "",
-				token: ""
+				token: null,
+				info: null
 			},
 			register: {
 				registerUser: false,
@@ -64,7 +65,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
-			signin: (username, password) => {
+			logout: () => {
+				setStore({
+					user: {
+						loggedIn: false,
+						username: "",
+						token: null,
+						info: null
+					}
+				});
+			},
+			login: (username, password) => {
 				return fetch(base_url + "/login", {
 					method: "POST",
 					headers: {
@@ -122,7 +133,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						store.user = {
 							loggedIn: true,
 							username: username,
-							token: data.jwt
+							token: data.jwt,
+							info: data.user
 						};
 						setStore(store);
 						return true;
@@ -131,6 +143,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error(err);
 						return false;
 					});
+			},
+			track: (userId, orderId) => {
+				return (
+					fetch(
+						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="${userId}"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
+					)
+						//where do I need to import user and tracking ID to make this work
+						//where does the "basename" of my usps name go???
+						// now I think I can call on actions.track in track.js...
+						.then(res => res.text())
+						.then(res => console.log(res))
+				);
 			},
 			changeColor: (index, color) => {
 				//get the store
