@@ -52,7 +52,7 @@ export const Singlepuzzle = props => {
 						{/* why do these columns not work. I want image on left side  */}
 						<Col>
 							<Card.Text>{store.puzzles[id].text}</Card.Text>
-							<Button variant="primary">Swap It!</Button>
+
 							<Card.Text className="text-center">
 								<strong>Description:</strong> <p>{store.puzzles[id].text}</p>
 								<br />
@@ -61,9 +61,13 @@ export const Singlepuzzle = props => {
 								<strong>No. pieces:</strong> <p>{store.puzzles[id].pieces}</p>
 								<br />
 								<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
-								<Button variant="success" className="text-center">
-									Swap It!
-								</Button>
+								{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
+									<Button variant="success" className="text-center">
+										Swap It!
+									</Button>
+								) : (
+									"You need to add your puzzle"
+								)}
 							</Card.Text>
 						</Col>
 					</Row>
