@@ -7,6 +7,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				username: "",
 				token: ""
 			},
+			register: {
+				registerUser: false,
+				full_name: "",
+				email: "",
+				usernmae: "",
+				token: ""
+			},
 			puzzles: [
 				{
 					img: "https://via.placeholder.com/300",
@@ -64,6 +71,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
+						full_name: full_name,
+						email: email,
+						username: username,
+						password: password
+					})
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw new Error(resp.statusText);
+						}
+						return resp.json();
+					})
+					.then(data => {
+						let store = getStore();
+						store.user = {
+							loggedIn: true,
+							username: username,
+							token: data.jwt
+						};
+						setStore(store);
+						return true;
+					})
+					.catch(err => {
+						console.error(err);
+						return false;
+					});
+			},
+			register: () => {
+				return fetch(base_url + "/registerpage", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						full_name: full_name,
+						email: email,
 						username: username,
 						password: password
 					})
