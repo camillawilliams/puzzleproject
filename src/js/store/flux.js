@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-cf0fbf96-ec01-44fb-a28d-62befc096805.ws-us02.gitpod.io/";
+	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
 	return {
 		store: {
 			user: {
@@ -9,11 +9,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				info: null
 			},
 			register: {
-				registerUser: false,
 				full_name: "",
 				email: "",
-				usernmae: "",
-				token: ""
+				username: "",
+				password: ""
 			},
 			puzzles: [
 				{
@@ -82,8 +81,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						full_name: full_name,
-						email: email,
 						username: username,
 						password: password
 					})
@@ -99,7 +96,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						store.user = {
 							loggedIn: true,
 							username: username,
-							token: data.jwt
+							token: data.jwt,
+							info: data.user
 						};
 						setStore(store);
 						return true;
@@ -109,8 +107,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-			register: () => {
-				return fetch(base_url + "/registerpage", {
+			registerPage: (full_name, email, username, password) => {
+				return fetch(base_url + "/user", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -131,8 +129,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						let store = getStore();
 						store.user = {
-							loggedIn: true,
-							username: username,
 							token: data.jwt,
 							info: data.user
 						};
