@@ -46,7 +46,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				}
 			],
-			shipping: [{ text: "Puzzle Swap" }]
+			shipping: [
+				{
+					arrivalDate: "",
+					trackingID: "",
+					status: ""
+				}
+			]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -101,16 +107,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-			track: (userId, orderId) => {
+			track: trackingId => {
 				return (
 					fetch(
-						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="${userId}"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
+						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="6084GEEK5289"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
 					)
 						//where do I need to import user and tracking ID to make this work
 						//where does the "basename" of my usps name go???
 						// now I think I can call on actions.track in track.js...
 						.then(res => res.text())
-						.then(res => console.log(res))
+						.then(res => res)
+						.catch(err => err)
 				);
 			},
 			changeColor: (index, color) => {
