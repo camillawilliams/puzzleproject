@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
@@ -14,12 +15,12 @@ export const SignIn = () => {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		if (username !== "" && password !== "") {
-			let resp = await actions.signin(username, password);
+			let resp = await actions.login(username, password);
 			console.log(resp);
 			if (resp) {
 				history.push("/puzzles");
 			} else {
-				console.error("failed to sign in");
+				console.error("Username or Password are not correct");
 			}
 		}
 	}
@@ -27,11 +28,12 @@ export const SignIn = () => {
 	return (
 		<Form className="login-form" onSubmit={handleSubmit}>
 			<h4>Sign in to your account</h4>
+			<br />
 			<Form.Group controlId="formBasicUsername">
-				<Form.Label>username</Form.Label>
+				<Form.Label>Username</Form.Label>
 				<Form.Control
 					type="text"
-					placeholder="Enter username"
+					placeholder="Username"
 					value={username}
 					onChange={e => setUsername(e.target.value)}
 				/>
@@ -44,12 +46,16 @@ export const SignIn = () => {
 					value={password}
 					onChange={e => setPassword(e.target.value)}
 				/>
+				<br />
 			</Form.Group>
 			<Button variant="success" type="submit">
 				Sign In
 			</Button>
 			&nbsp; &nbsp; or &nbsp;
 			<Link to="/registerpage"> Register </Link>
+			<br />
+			<br />
+			<Link to=""> Forgot Username / Password </Link>
 		</Form>
 	);
 };

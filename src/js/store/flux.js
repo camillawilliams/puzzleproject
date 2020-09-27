@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-c3702225-494e-4c14-a68e-d6047bb997ec.ws-us02.gitpod.io";
+	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
 	return {
 		store: {
 			user: {
@@ -7,6 +7,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				username: "",
 				token: null,
 				info: null
+			},
+			register: {
+				full_name: "",
+				email: "",
+				username: "",
+				password: ""
 			},
 			puzzles: [
 				{
@@ -107,7 +113,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-			track: trackingId => {
+			registerPage: (full_name, email, username, password) => {
+				return fetch(base_url + "/user", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						full_name: full_name,
+						email: email,
+						username: username,
+						password: password
+					})
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw new Error(resp.statusText);
+						}
+						return resp.json();
+					})
+					.then(data => {
+						let store = getStore();
+						store.user = {
+							token: data.jwt,
+							info: data.user
+						};
+						setStore(store);
+						return true;
+					})
+					.catch(err => {
+						console.error(err);
+						return false;
+					});
+			},
+			track: (userId, orderId) => {
 				return (
 					fetch(
 						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="6084GEEK5289"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
