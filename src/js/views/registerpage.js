@@ -10,13 +10,26 @@ export const RegisterPage = () => {
 	const { store, actions } = useContext(Context);
 	const [full_name, setFull_name] = useState("");
 	const [email, setEmail] = useState("");
+	const [address, setAddress] = useState("");
+	const [city, setCity] = useState("");
+	const [state, setState] = useState("");
+	const [zip, setZip] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		if (full_name !== "" && email !== "" && username !== "" && password !== "") {
-			let resp = await actions.registerPage(full_name, email, username, password);
+		if (
+			full_name !== "" &&
+			email !== "" &&
+			address !== "" &&
+			city !== "" &&
+			state !== "" &&
+			zip !== "" &&
+			username !== "" &&
+			password !== ""
+		) {
+			let resp = await actions.registerPage(full_name, email, address, city, state, zip, username, password);
 			console.log(resp);
 			if (resp) {
 				history.push("/puzzles");
@@ -27,7 +40,7 @@ export const RegisterPage = () => {
 	}
 
 	return (
-		<Form className="login-form">
+		<Form className="login-form" onSubmit={handleSubmit}>
 			<h4>Register</h4>
 			<Form.Group controlId="fullName">
 				<Form.Label>Full Name</Form.Label>
@@ -42,10 +55,31 @@ export const RegisterPage = () => {
 				<Form.Label>Email</Form.Label>
 				<Form.Control type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
 			</Form.Group>
+			<Form.Group controlId="address">
+				<Form.Label>Address</Form.Label>
+				<Form.Control
+					type="text"
+					placeholder="Address"
+					value={address}
+					onChange={e => setAddress(e.target.value)}
+				/>
+			</Form.Group>
+			<Form.Group controlId="city">
+				<Form.Label>City</Form.Label>
+				<Form.Control type="text" placeholder="City" value={city} onChange={e => setCity(e.target.value)} />
+			</Form.Group>
+			<Form.Group controlId="state">
+				<Form.Label>State</Form.Label>
+				<Form.Control type="text" placeholder="State" value={state} onChange={e => setState(e.target.value)} />
+			</Form.Group>
+			<Form.Group controlId="zip">
+				<Form.Label>Zip</Form.Label>
+				<Form.Control type="text" placeholder="Zip" value={zip} onChange={e => setZip(e.target.value)} />
+			</Form.Group>
 			<Form.Group controlId="userName">
 				<Form.Label>Username</Form.Label>
 				<Form.Control
-					type="username"
+					type="text"
 					placeholder="Username"
 					value={username}
 					onChange={e => setUsername(e.target.value)}
@@ -54,7 +88,7 @@ export const RegisterPage = () => {
 			<Form.Group controlId="password">
 				<Form.Label>Password</Form.Label>
 				<Form.Control
-					type="password"
+					type="text"
 					placeholder="password"
 					value={password}
 					onChange={e => setPassword(e.target.value)}

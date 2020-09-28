@@ -8,11 +8,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				token: null,
 				info: null
 			},
+
 			register: {
 				full_name: "",
 				email: "",
+				address: "",
+				city: "",
+				state: "",
+				zip: "",
 				username: "",
-				password: ""
+				password: "",
+				loggedIn: false
 			},
 			puzzles: [
 				{
@@ -64,16 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
-			logout: () => {
-				setStore({
-					user: {
-						loggedIn: false,
-						username: "",
-						token: null,
-						info: null
-					}
-				});
-			},
+
 			login: (username, password) => {
 				return fetch(base_url + "/login", {
 					method: "POST",
@@ -107,8 +104,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-			registerPage: (full_name, email, username, password) => {
-				return fetch(base_url + "/user", {
+
+			logout: () => {
+				setStore({
+					user: {
+						loggedIn: false,
+						username: "",
+						token: null,
+						info: null
+					}
+				});
+			},
+
+			registerPage: (full_name, email, address, city, state, zip, username, password) => {
+				return fetch(base_url + "/register", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -116,6 +125,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						full_name: full_name,
 						email: email,
+						address: address,
+						city: city,
+						state: state,
+						zip: zip,
 						username: username,
 						password: password
 					})
@@ -129,6 +142,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						let store = getStore();
 						store.user = {
+							loggedIn: true,
+							username: "",
 							token: data.jwt,
 							info: data.user
 						};
@@ -140,6 +155,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
+
 			track: (userId, orderId) => {
 				return (
 					fetch(
