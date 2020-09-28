@@ -62,7 +62,6 @@ export const SignIn = () => {
 				<Link to="/registerpage"> Register </Link>
 				<br />
 				<br />
-				<Link to=""> Forgot Username / Password </Link>
 			</Form>
 		</>
 	);
