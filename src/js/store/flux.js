@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-cf0fbf96-ec01-44fb-a28d-62befc096805.ws-us02.gitpod.io/";
+	const base_url = "https://3000-f8d3c0ed-ee3c-4577-a0e7-e213706893bf.ws-us02.gitpod.io";
 	return {
 		store: {
 			user: {
@@ -48,6 +48,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			shipping: [{ text: "Puzzle Swap" }]
 		},
+		swapPuzzle: [
+			{
+				// // puzzleName: puzzleName,
+				// puzzlePicture: puzzlePicture,
+				// boxPicture: boxPicture,
+				// number: number,
+				// ageRange: ageRange,
+				// category: category
+			}
+		],
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -55,8 +65,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadSomeData: () => {
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+                    fetch().then().then(data => setStore({ "foo": data.bar }))
+                */
 			},
 			logout: () => {
 				setStore({
@@ -113,22 +123,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.then(res => console.log(res))
 				);
 			},
+			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category) => {
+				
+				fetch(base_url + "/puzzle", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						name_of_puzzle: puzzleName,
+						picture_of_puzzle: "puzzlePicture", //to remove quotations, only added to use as normal string
+						picture_of_box: "boxPicture", //same
+						number_of_pieces: number,
+						age_range: ageRange,
+						category: category,
+						is_available: true,
+						owner_id: 1
+					})
+				});
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
-
 				//we have to loop the entire demo array to look for the respective index
 				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;
 				});
-
 				//reset the global store
 				setStore({ demo: demo });
 			}
 		}
 	};
 };
-
 export default getState;

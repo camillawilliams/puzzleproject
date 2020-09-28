@@ -21,12 +21,12 @@ export const Shipping = props => {
 					</Form.Group>
 				</Form.Row>
 				<Form.Row>
-					<Form.Group as={Col} controlId="formGridEmail">
+					<Form.Group as={Col} controlId="formGridName">
 						<Form.Label>First Name</Form.Label>
 						<Form.Control type="email" placeholder="Enter First Name" />
 					</Form.Group>
 
-					<Form.Group as={Col} controlId="formGridPassword">
+					<Form.Group as={Col} controlId="formGridLastName">
 						<Form.Label>Last Name</Form.Label>
 						<Form.Control type="password" placeholder="Enter Last Name" />
 					</Form.Group>
