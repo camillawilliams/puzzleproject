@@ -7,7 +7,11 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-export const MyNavbarSignIn = () => (
+export const MyNavbarSignIn = () => {
+    const {store, actions} = userContext(Context);
+    const {loggedIn} = store.user;
+
+    return (
 	<div className="mynavbar mx-">
 		<Navbar bg="light" expand="lg">
 			<i className="fas fa-puzzle-piece" />
@@ -35,9 +39,18 @@ export const MyNavbarSignIn = () => (
 					<NavDropdown.Item href="/shipping/">Shipping</NavDropdown.Item>
 				</NavDropdown>
 			</Navbar.Collapse>
-			<Nav.Link href="#link">
+
+            {store.user.info != null
+            &&
+            store.user.info.puzzles_owned.length > 0
+            ? (
+            <Nav.Link href="#link">
 				<i className="fas fa-shopping-cart" />
 			</Nav.Link>
-		</Navbar>
-	</div>
-);
+            ) : null}
+            
+		   </Navbar>
+       </div>
+    
+   );
+}

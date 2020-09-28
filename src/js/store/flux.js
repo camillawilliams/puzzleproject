@@ -8,6 +8,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				token: null,
 				info: null
 			},
+			register: {
+				full_name: "",
+				email: "",
+				username: "",
+				password: ""
+			},
 			puzzles: [
 				{
 					img: "https://via.placeholder.com/300",
@@ -46,18 +52,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				}
 			],
-			shipping: [{ text: "Puzzle Swap" }]
+			shipping: [
+				{
+					arrivalDate: "",
+					trackingID: "",
+					status: ""
+				}
+			]
 		},
-		swapPuzzle: [
-			{
-				// // puzzleName: puzzleName,
-				// puzzlePicture: puzzlePicture,
-				// boxPicture: boxPicture,
-				// number: number,
-				// ageRange: ageRange,
-				// category: category
-			}
-		],
+		swapPuzzle: [{}],
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -111,16 +114,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
+			registerPage: (full_name, email, username, password) => {
+				return fetch(base_url + "/user", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						full_name: full_name,
+						email: email,
+						username: username,
+						password: password
+					})
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw new Error(resp.statusText);
+						}
+						return resp.json();
+					})
+					.then(data => {
+						let store = getStore();
+						store.user = {
+							token: data.jwt,
+							info: data.user
+						};
+						setStore(store);
+						return true;
+					})
+					.catch(err => {
+						console.error(err);
+						return false;
+					});
+			},
 			track: (userId, orderId) => {
 				return (
 					fetch(
-						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="${userId}"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
+						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="6084GEEK5289"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
 					)
 						//where do I need to import user and tracking ID to make this work
 						//where does the "basename" of my usps name go???
 						// now I think I can call on actions.track in track.js...
 						.then(res => res.text())
-						.then(res => console.log(res))
+						.then(res => res)
+						.catch(err => err)
 				);
 			},
 			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category) => {
