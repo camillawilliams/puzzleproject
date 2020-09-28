@@ -11,7 +11,7 @@ import { Context } from "../store/appContext";
 export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
 	const { loggedIn } = store.user;
-	const { registered } = store.register;
+
 	return (
 		<div className="mynavbar mx-">
 			<Navbar bg="light" expand="lg">

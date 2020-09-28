@@ -28,7 +28,7 @@ export const Swap = props => {
 		// 	age !== "" &&
 		// 	category !== ""
 		// ) {
-		let resp = await actions.swapPuzzle(puzzleName, puzzlePicture, boxPicture, number, age, category); 
+		let resp = await actions.swapPuzzle(puzzleName, puzzlePicture, boxPicture, number, age, category);
 		console.log(resp);
 		if (resp) {
 			history.push("/puzzles");
