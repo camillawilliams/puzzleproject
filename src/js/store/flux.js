@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
+	const base_url = "https://3000-f8d3c0ed-ee3c-4577-a0e7-e213706893bf.ws-us02.gitpod.io";
 	return {
 		store: {
 			user: {
@@ -58,8 +58,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
 				}
 			],
-			shipping: [{ text: "Puzzle Swap" }]
+			shipping: [
+				{
+					arrivalDate: "",
+					trackingID: "",
+					status: ""
+				}
+			]
 		},
+		swapPuzzle: [{}],
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -67,8 +74,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadSomeData: () => {
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+                    fetch().then().then(data => setStore({ "foo": data.bar }))
+                */
 			},
 
 			login: (username, password) => {
@@ -159,31 +166,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 			track: (userId, orderId) => {
 				return (
 					fetch(
-						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="${userId}"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
+						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="6084GEEK5289"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
 					)
 						//where do I need to import user and tracking ID to make this work
 						//where does the "basename" of my usps name go???
 						// now I think I can call on actions.track in track.js...
 						.then(res => res.text())
-						.then(res => console.log(res))
+						.then(res => res)
+						.catch(err => err)
 				);
+			},
+			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category) => {
+				
+				fetch(base_url + "/puzzle", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						name_of_puzzle: puzzleName,
+						picture_of_puzzle: "puzzlePicture", //to remove quotations, only added to use as normal string
+						picture_of_box: "boxPicture", //same
+						number_of_pieces: number,
+						age_range: ageRange,
+						category: category,
+						is_available: true,
+						owner_id: 1
+					})
+				});
 			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
-
 				//we have to loop the entire demo array to look for the respective index
 				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;
 				});
-
 				//reset the global store
 				setStore({ demo: demo });
 			}
 		}
 	};
 };
-
 export default getState;
