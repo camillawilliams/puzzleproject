@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-f8d3c0ed-ee3c-4577-a0e7-e213706893bf.ws-us02.gitpod.io";
+	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
 	return {
 		store: {
 			user: {
@@ -8,9 +8,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				token: null,
 				info: null
 			},
+
 			register: {
 				full_name: "",
 				email: "",
+				address: "",
+				city: "",
+				state: "",
+				zip: "",
 				username: "",
 				password: ""
 			},
@@ -71,16 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
 			},
-			logout: () => {
-				setStore({
-					user: {
-						loggedIn: false,
-						username: "",
-						token: null,
-						info: null
-					}
-				});
-			},
+
 			login: (username, password) => {
 				return fetch(base_url + "/login", {
 					method: "POST",
@@ -114,8 +110,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-			registerPage: (full_name, email, username, password) => {
-				return fetch(base_url + "/user", {
+
+			logout: () => {
+				setStore({
+					user: {
+						loggedIn: false,
+						username: "",
+						token: null,
+						info: null
+					}
+				});
+			},
+
+			registerPage: (full_name, email, address, city, state, zip, username, password) => {
+				return fetch(base_url + "/register", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -123,6 +131,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						full_name: full_name,
 						email: email,
+						address: address,
+						city: city,
+						state: state,
+						zip: zip,
 						username: username,
 						password: password
 					})
@@ -147,6 +159,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
+
 			track: (userId, orderId) => {
 				return (
 					fetch(

@@ -11,6 +11,7 @@ import { Context } from "../store/appContext";
 export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
 	const { loggedIn } = store.user;
+
 	return (
 		<div className="mynavbar mx-">
 			<Navbar bg="light" expand="lg">
@@ -39,12 +40,17 @@ export const MyNavbar = () => {
 								<Link to="/signin">Sign In </Link>
 							</NavDropdown.Item>
 						)}
-
 						{loggedIn ? <NavDropdown.Item href="/track">Track Your Order</NavDropdown.Item> : null}
 						{loggedIn ? <NavDropdown.Item href="/puzzles">Browse Puzzles</NavDropdown.Item> : null}
 						{loggedIn ? <NavDropdown.Item href="/upload">Upload View</NavDropdown.Item> : null}
 						{loggedIn ? <NavDropdown.Item href="/swap/">Swap Puzzles</NavDropdown.Item> : null}
 						{loggedIn ? <NavDropdown.Item href="/shipping/">Shipping</NavDropdown.Item> : null}
+
+						{loggedIn ? null : (
+							<NavDropdown.Item>
+								<Link to="/registerpage">Register</Link>
+							</NavDropdown.Item>
+						)}
 
 						<NavDropdown.Item href="/report">Contact Us</NavDropdown.Item>
 					</NavDropdown>
