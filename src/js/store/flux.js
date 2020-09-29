@@ -161,7 +161,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 			},
 			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category) => {
-				
 				fetch(base_url + "/puzzle", {
 					method: "POST",
 					headers: {
