@@ -13,7 +13,7 @@ import { RegisterPage } from "./views/registerpage";
 import { Footer } from "./component/footer";
 import { Upload } from "./component/upload";
 import { Track } from "./component/track";
-import { Shipping } from "./views/shipping";
+//import { Paypal } from "./views/paypal";
 import { Swap } from "./views/swap";
 import { Report } from "./views/report";
 
@@ -55,15 +55,12 @@ const Layout = () => {
 						<Route exact path="/track">
 							<Track />
 						</Route>
-						<Route exact path="/shipping">
-							<Shipping />
-						</Route>
 						<Route exact path="/swap">
 							<Swap />
 						</Route>
-						<Route exact path="/shipping">
-							<Shipping />
-						</Route>
+						{/* <Route exact path="/paypal">
+							<Paypal />
+						</Route> */}
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

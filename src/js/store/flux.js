@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
+	const base_url = "https://3000-f8d3c0ed-ee3c-4577-a0e7-e213706893bf.ws-us02.gitpod.io/";
 	return {
 		store: {
 			user: {
@@ -174,22 +174,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 			},
 			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category) => {
-				fetch(base_url + "/puzzle", {
+				let data = {
+					name_of_puzzle: puzzleName,
+					picture_of_puzzle: puzzlePicture,
+					picture_of_box: boxPicture,
+					number_of_pieces: number,
+					age_range: ageRange,
+					category: category,
+					is_available: true,
+					owner_id: 1
+				};
+
+				let formData = new FormData();
+
+				for (var key in data) {
+					formData.append(key, data[key]);
+				}
+
+				return fetch(base_url + "/puzzle", {
 					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						name_of_puzzle: puzzleName,
-						picture_of_puzzle: "puzzlePicture", //to remove quotations, only added to use as normal string
-						picture_of_box: "boxPicture", //same
-						number_of_pieces: number,
-						age_range: ageRange,
-						category: category,
-						is_available: true,
-						owner_id: 1
-					})
-				});
+					body: formData
+				})
+					.then(res => res.json())
+					.then(res => res);
 			},
 			changeColor: (index, color) => {
 				//get the store
