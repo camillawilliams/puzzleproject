@@ -11,12 +11,12 @@ export const Puzzles = props => {
 	return (
 		<div>
 			<div className="container d-flex justify-content-center">
-				<CardRow cardData={store.puzzles} category="Category" />
+				<CardRow data={store.puzzleFetch} category="Category" />
 			</div>
 
-			<div className="cool2-container d-flex justify-content-center">
-				<CardRow cardData={store.puzzles} category="Category" />
-			</div>
+			{/* <div className="cool2-container d-flex justify-content-center"> */}
+			{/* <CardRow cardData={store.puzzles} category="Category" /> */}
+			{/* </div> */}
 		</div>
 	);
 };

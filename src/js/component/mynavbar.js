@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -11,6 +11,14 @@ import { Context } from "../store/appContext";
 export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
 	const { loggedIn } = store.user;
+	const [display, setDisplay] = useState(false);
+	const [options, setOptions] = useState([]);
+	const [search, setSearch] = useState("");
+
+	//useEffect(() => {
+	//const categories = [];
+	//const promises = new Array(20).fill().map((v, i) => fetch());
+	//});
 
 	return (
 		<div className="mynavbar mx-5" dispay="flex">
