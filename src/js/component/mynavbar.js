@@ -78,9 +78,9 @@ export const MyNavbar = () => {
 					</NavDropdown>
 				</Navbar.Collapse>
 				{loggedIn ? (
-					<Nav.Link link="#link">
+					<Link to="/swapcart">
 						<i className="fas fa-shopping-cart" />
-					</Nav.Link>
+					</Link>
 				) : null}
 			</Navbar>
 		</div>

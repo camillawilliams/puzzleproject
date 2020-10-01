@@ -90,7 +90,7 @@ export const Swap = props => {
 						</Form.Control>
 					</Form.Group>
 					<Button variant="success" type="text">
-						Swap
+						Upload
 					</Button>
 				</Form>
 			</Form>

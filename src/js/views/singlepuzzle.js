@@ -63,10 +63,12 @@ export const Singlepuzzle = props => {
 								<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
 								{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
 									<Button variant="success" className="text-center">
-										Swap It!
+										<Link to={`/swapcart/${id}`}>Swap It!</Link>
 									</Button>
 								) : (
-									"You need to add your puzzle"
+									<Button variant="success">
+										<Link to="/swap">Please Upload Your Puzzle to start SWAPING</Link>
+									</Button>
 								)}
 							</Card.Text>
 						</Col>

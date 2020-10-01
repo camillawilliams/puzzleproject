@@ -16,6 +16,7 @@ import { Track } from "./component/track";
 import { Shipping } from "./views/shipping";
 import { Swap } from "./views/swap";
 import { Report } from "./views/report";
+import { Swapcart } from "./views/swapcart";
 
 //create your first component
 const Layout = () => {
@@ -63,6 +64,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/shipping">
 							<Shipping />
+						</Route>
+						<Route exact path="/swapcart/:id">
+							<Swapcart />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
