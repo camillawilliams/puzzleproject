@@ -8,9 +8,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				token: null,
 				info: null
 			},
+
 			register: {
 				full_name: "",
 				email: "",
+				address: "",
+				city: "",
+				state: "",
+				zip: "",
 				username: "",
 				password: ""
 			},
@@ -61,6 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			]
 		},
+		swapPuzzle: [{}],
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -68,19 +74,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadSomeData: () => {
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+                    fetch().then().then(data => setStore({ "foo": data.bar }))
+                */
 			},
-			logout: () => {
-				setStore({
-					user: {
-						loggedIn: false,
-						username: "",
-						token: null,
-						info: null
-					}
-				});
-			},
+
 			login: (username, password) => {
 				return fetch(base_url + "/login", {
 					method: "POST",
@@ -114,8 +111,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-			registerPage: (full_name, email, username, password) => {
-				return fetch(base_url + "/user", {
+
+			logout: () => {
+				setStore({
+					user: {
+						loggedIn: false,
+						username: "",
+						token: null,
+						info: null
+					}
+				});
+			},
+
+			registerPage: (full_name, email, address, city, state, zip, username, password) => {
+				return fetch(base_url + "/register", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -123,6 +132,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						full_name: full_name,
 						email: email,
+						address: address,
+						city: city,
+						state: state,
+						zip: zip,
 						username: username,
 						password: password
 					})
@@ -152,6 +165,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ puzzleFetch: data }));
 			},
+
 			track: (userId, orderId) => {
 				return (
 					fetch(
@@ -165,22 +179,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch(err => err)
 				);
 			},
+			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category) => {
+				fetch(base_url + "/puzzle", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						name_of_puzzle: puzzleName,
+						picture_of_puzzle: "puzzlePicture", //to remove quotations, only added to use as normal string
+						picture_of_box: "boxPicture", //same
+						number_of_pieces: number,
+						age_range: ageRange,
+						category: category,
+						is_available: true,
+						owner_id: 1
+					})
+				});
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
-
 				//we have to loop the entire demo array to look for the respective index
 				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;
 				});
-
 				//reset the global store
 				setStore({ demo: demo });
 			}
 		}
 	};
 };
-
 export default getState;

@@ -6,7 +6,6 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 
 export const Puzzles = props => {
-	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
 	return (
