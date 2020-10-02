@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -11,9 +11,17 @@ import { Context } from "../store/appContext";
 export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
 	const { loggedIn } = store.user;
+	const [display, setDisplay] = useState(false);
+	const [options, setOptions] = useState([]);
+	const [search, setSearch] = useState("");
+
+	//useEffect(() => {
+	//const categories = [];
+	//const promises = new Array(20).fill().map((v, i) => fetch());
+	//});
 
 	return (
-		<div className="mynavbar mx-">
+		<div className="mynavbar mx-5" dispay="flex">
 			<Navbar bg="light" expand="lg">
 				<i className="fas fa-puzzle-piece" />
 				&nbsp;
@@ -40,24 +48,48 @@ export const MyNavbar = () => {
 								<Link to="/signin">Sign In </Link>
 							</NavDropdown.Item>
 						)}
-						{loggedIn ? <NavDropdown.Item href="/track">Track Your Order</NavDropdown.Item> : null}
-						{loggedIn ? <NavDropdown.Item href="/puzzles">Browse Puzzles</NavDropdown.Item> : null}
-						{loggedIn ? <NavDropdown.Item href="/upload">Upload View</NavDropdown.Item> : null}
-						{loggedIn ? <NavDropdown.Item href="/swap/">Swap Puzzles</NavDropdown.Item> : null}
-						{loggedIn ? <NavDropdown.Item href="/shipping/">Shipping</NavDropdown.Item> : null}
-
 						{loggedIn ? null : (
 							<NavDropdown.Item>
 								<Link to="/registerpage">Register</Link>
 							</NavDropdown.Item>
 						)}
+						{/* {loggedIn ? <NavDropdown.Item href="/upload">Upload View</NavDropdown.Item> : null} */}
+						{loggedIn ? (
+							<NavDropdown.Item>
+								<Link to="/swap">Upload Your Puzzle</Link>
+							</NavDropdown.Item>
+						) : null}
 
-						<NavDropdown.Item href="/report">Contact Us</NavDropdown.Item>
+						{loggedIn ? (
+							<NavDropdown.Item>
+								<Link to="/puzzles">Browse Puzzles</Link>
+							</NavDropdown.Item>
+						) : null}
+
+						{loggedIn ? (
+							<NavDropdown.Item>
+								<Link to="/shipping/">Shipping</Link>
+							</NavDropdown.Item>
+						) : null}
+
+						{loggedIn ? (
+							<NavDropdown.Item>
+								<Link to="/track">Track Your Order</Link>
+							</NavDropdown.Item>
+						) : null}
+
+						{loggedIn ? (
+							<NavDropdown.Item>
+								<Link to="/report">Contact Us</Link>
+							</NavDropdown.Item>
+						) : null}
 					</NavDropdown>
 				</Navbar.Collapse>
-				<Nav.Link href="#link">
-					<i className="fas fa-shopping-cart" />
-				</Nav.Link>
+				{loggedIn ? (
+					<Link to="/swapcart">
+						<i className="fas fa-shopping-cart" />
+					</Link>
+				) : null}
 			</Navbar>
 		</div>
 	);

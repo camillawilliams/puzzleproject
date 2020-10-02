@@ -8,23 +8,24 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 export const CardRow = props => {
-	const { cardData, category } = props;
+	const { cardData, category, title, data } = props;
+	const { store, actions } = useContext(Context);
 	return (
 		<div>
-			<h2 style={{ textAlign: "left" }}>{category}</h2>
+			{/* <h2 style={{ textAlign: "left" }}>{category}</h2> */}
 			<CardDeck style={{ height: "300px" }}>
-				{cardData.map((item, index) => {
+				{data.map((item, index) => {
 					return (
 						<Card key={index}>
-							<Card.Img variant="top" src={item.img} />
+							<Card.Img variant="top" src="https://via.placeholder.com/200" />
 							<Card.Body>
-								<Card.Title>{item.title}</Card.Title>
+								<Card.Title>{item.name_of_puzzle}</Card.Title>
 								<Card.Text>
-									Description: {item.text}
+									{/* Description: {item.text} */}
 									<br />
-									No. Pieces: {item.pieces}
+									No. Pieces: {item.number_of_pieces}
 									<br />
-									Ages: {item.ages}
+									Ages: {item.age_range}
 								</Card.Text>
 								<Button variant="success">
 									<Link to={`/singlepuzzle/${index}`}>See More</Link>
@@ -43,7 +44,8 @@ CardRow.propTypes = {
 	title: PropTypes.string,
 	data: PropTypes.string,
 	pieces: PropTypes.number,
-	ages: PropTypes.string
+	ages: PropTypes.string,
+	data: PropTypes.string
 };
 
 export default CardRow;

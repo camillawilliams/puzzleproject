@@ -16,6 +16,7 @@ import { Track } from "./component/track";
 //import { Paypal } from "./views/paypal";
 import { Swap } from "./views/swap";
 import { Report } from "./views/report";
+import { Swapcart } from "./views/swapcart";
 
 //create your first component
 const Layout = () => {
@@ -61,6 +62,9 @@ const Layout = () => {
 						{/* <Route exact path="/paypal">
 							<Paypal />
 						</Route> */}
+						<Route exact path="/swapcart/:id">
+							<Swapcart />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

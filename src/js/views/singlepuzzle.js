@@ -67,9 +67,14 @@ export const Singlepuzzle = props => {
 										variant="success"
 										className="text-center">
 										Swap It!
+									<Button variant="success" className="text-center">
+										<Link to={`/swapcart/${id}`}>Swap It!</Link>
 									</Button>
 								) : (
-									"You need to add your puzzle"
+									<Button variant="success">
+										<Link to="/swap">Please Upload Your Puzzle to start SWAPING</Link>
+									</Button>
+                                    </Button>
 								)}
 							</Card.Text>
 						</Col>

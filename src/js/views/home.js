@@ -16,7 +16,7 @@ export const Home = () => {
 				<HomeJumbo />
 			</div>
 			<div className="container">
-				<CardRow cardData={store.puzzles} />
+				<CardRow data={store.puzzleFetch} style={{ height: "300px" }} />
 			</div>
 		</div>
 	);

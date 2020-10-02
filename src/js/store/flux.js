@@ -19,6 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				username: "",
 				password: ""
 			},
+			puzzleFetch: [],
 			puzzles: [
 				{
 					img: "https://via.placeholder.com/300",
@@ -158,6 +159,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error(err);
 						return false;
 					});
+			},
+			getPuzzles: () => {
+				return fetch(base_url + "/puzzle")
+					.then(res => res.json())
+					.then(data => setStore({ puzzleFetch: data }));
 			},
 
 			track: (userId, orderId) => {
