@@ -62,19 +62,21 @@ export const Singlepuzzle = props => {
 								<br />
 								<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
 								{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
-									<Button
-										onClick={() => actions.createSubscription}
-										variant="success"
-										className="text-center">
-										Swap It!
-									<Button variant="success" className="text-center">
-										<Link to={`/swapcart/${id}`}>Swap It!</Link>
-									</Button>
+									<React.Fragment>
+										<Button
+											onClick={() => actions.createSubscription}
+											variant="success"
+											className="text-center">
+											Swap It!
+										</Button>
+										<Button variant="success" className="text-center">
+											<Link to={`/swapcart/${id}`}>Swap It!</Link>
+										</Button>
+									</React.Fragment>
 								) : (
 									<Button variant="success">
 										<Link to="/swap">Please Upload Your Puzzle to start SWAPING</Link>
 									</Button>
-                                    </Button>
 								)}
 							</Card.Text>
 						</Col>
@@ -84,40 +86,6 @@ export const Singlepuzzle = props => {
 		</Container>
 	);
 };
-// 	useEffect(() => {
-// 		window.paypal
-// 			.Buttons({
-// 				createSubscription: (data, actions, err) => {
-// 					return actions.order.create({
-// 						intent: "CAPTURE",
-// 						purchase_units: [
-// 							{
-// 								description: "Cool looking table",
-// 								amount: {
-// 									currency_code: "USD",
-// 									value: "300.00"
-// 								}
-// 							}
-// 						]
-// 					});
-// 				},
-// 				onApprove: async (data, actions) => {
-// 					const order = await actions.order.capture();
-// 					console.log(order);
-// 				},
-// 				onError: err => {
-// 					console.log(err);
-// 				}
-// 			})
-// 			.render(paypal.current);
-// 	}, []);
-
-// 	return (
-// 		<div>
-// 			<div ref={paypal} />
-// 		</div>
-// 	);
-// }
 
 Singlepuzzle.propTypes = {
 	match: PropTypes.object,
@@ -126,40 +94,3 @@ Singlepuzzle.propTypes = {
 	pieces: PropTypes.number,
 	ages: PropTypes.string
 };
-
-// paypal
-// 	.Buttons({
-// 		createSubscription: function(data, actions) {
-// 			return actions.subscription.create({
-// 				plan_id: "P-2UF78835G6983425GLSM44MA"
-// 			});
-// 		},
-
-// 		onApprove: function(data, actions) {
-// 			alert("You have successfully created subscription " + data.subscriptionID);
-// 		}
-// 	})
-// 	.render("#paypal-button-container");
-
-{
-	/* <div id="paypal-button-container"></div>
-<script src="https://www.paypal.com/sdk/js?client-id=AXfdzI0qyg6V-54ii6S1YaKqtRCN_Ln_eKVPLDgdYbqRKqUNrraADyQZyP-nG1qaI97OJ0PWr3rTmmxH&vault=true" data-sdk-integration-source="button-factory"></script>
-<script>
-  paypal.Buttons({
-      style: {
-          shape: 'rect',
-          color: 'white',
-          layout: 'vertical',
-          label: 'subscribe'
-      },
-      createSubscription: function(data, actions) {
-        return actions.subscription.create({
-          'plan_id': 'P-4LS14343BM5103733L5ZZD6I'
-        });
-      },
-      onApprove: function(data, actions) {
-        alert(data.subscriptionID);
-      }
-  }).render('#paypal-button-container');
-</script> */
-}

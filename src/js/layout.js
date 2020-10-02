@@ -13,7 +13,7 @@ import { RegisterPage } from "./views/registerpage";
 import { Footer } from "./component/footer";
 import { Upload } from "./component/upload";
 import { Track } from "./component/track";
-//import { Paypal } from "./views/paypal";
+import { Paypal } from "./views/paypal";
 import { Swap } from "./views/swap";
 import { Report } from "./views/report";
 import { Swapcart } from "./views/swapcart";
@@ -59,9 +59,9 @@ const Layout = () => {
 						<Route exact path="/swap">
 							<Swap />
 						</Route>
-						{/* <Route exact path="/paypal">
+						<Route exact path="/paypal">
 							<Paypal />
-						</Route> */}
+						</Route>
 						<Route exact path="/swapcart/:id">
 							<Swapcart />
 						</Route>
