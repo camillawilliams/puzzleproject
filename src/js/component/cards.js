@@ -17,7 +17,7 @@ export const CardRow = props => {
 				{data.map((item, index) => {
 					return (
 						<Card key={index}>
-							<Card.Img variant="top" src="https://via.placeholder.com/200" />
+							<Card.Img variant="top" src={item.picture_of_puzzle} />
 							<Card.Body>
 								<Card.Title>{item.name_of_puzzle}</Card.Title>
 								<Card.Text>

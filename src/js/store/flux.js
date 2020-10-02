@@ -166,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ puzzleFetch: data }));
 			},
 
-			track: (userId, orderId) => {
+			track: trackingId => {
 				return (
 					fetch(
 						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="6084GEEK5289"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
@@ -180,22 +180,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 			},
 			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category) => {
-				fetch(base_url + "/puzzle", {
+				let data = {
+					name_of_puzzle: puzzleName,
+					picture_of_puzzle: puzzlePicture,
+					picture_of_box: boxPicture,
+					number_of_pieces: number,
+					age_range: ageRange,
+					category: category,
+					is_available: true,
+					owner_id: 1
+				};
+
+				let formData = new FormData();
+
+				for (var key in data) {
+					formData.append(key, data[key]);
+				}
+
+				return fetch(base_url + "/puzzle", {
 					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						name_of_puzzle: puzzleName,
-						picture_of_puzzle: "puzzlePicture", //to remove quotations, only added to use as normal string
-						picture_of_box: "boxPicture", //same
-						number_of_pieces: number,
-						age_range: ageRange,
-						category: category,
-						is_available: true,
-						owner_id: 1
-					})
-				});
+					body: formData
+				})
+					.then(res => res.json())
+					.then(res => res);
 			},
 			changeColor: (index, color) => {
 				//get the store

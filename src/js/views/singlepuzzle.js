@@ -62,9 +62,17 @@ export const Singlepuzzle = props => {
 								<br />
 								<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
 								{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
-									<Button variant="success" className="text-center">
-										<Link to={`/swapcart/${id}`}>Swap It!</Link>
-									</Button>
+									<React.Fragment>
+										<Button
+											onClick={() => actions.createSubscription}
+											variant="success"
+											className="text-center">
+											Swap It!
+										</Button>
+										<Button variant="success" className="text-center">
+											<Link to={`/swapcart/${id}`}>Swap It!</Link>
+										</Button>
+									</React.Fragment>
 								) : (
 									<Button variant="success">
 										<Link to="/swap">Please Upload Your Puzzle to start SWAPING</Link>
