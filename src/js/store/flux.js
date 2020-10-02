@@ -166,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ puzzleFetch: data }));
 			},
 
-			track: (userId, orderId) => {
+			track: trackingId => {
 				return (
 					fetch(
 						`https://secure.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID="6084GEEK5289"><TrackID ID="${trackingId}"></TrackID></TrackRequest>`
