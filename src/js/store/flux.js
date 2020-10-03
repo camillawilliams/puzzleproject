@@ -165,7 +165,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ puzzleFetch: data }));
 			},
-			getPuzzle: id => {
+			getPuzzle: (data, id) => {
 				fetch(base_url + `/puzzle/${id}`)
 					.then(res => res.json())
 					.then(data => setStore({ puzzleFetch: data }));

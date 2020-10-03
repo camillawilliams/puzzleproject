@@ -15,7 +15,7 @@ export const Singlepuzzle = props => {
 	const { id } = useParams();
 	let active = 1;
 	let items = [];
-	for (let number = 1; number <= 5; number++) {
+	for (let number = 1; number <= 2; number++) {
 		items.push(
 			<Pagination.Item key={number} active={number === active}>
 				{number}
@@ -34,34 +34,37 @@ export const Singlepuzzle = props => {
 		<Container>
 			<Card>
 				<Card.Body>
-					{/* <Card.Title>Name</Card.Title> */}
-					<Card.Title>{store.puzzleFetch[id].title}</Card.Title>
 					{/* all of these need to check PuzzleFetch now */}
 					<Row className="d-flex justify-content-center">
 						<Card.Title>
-							<h2>{store.puzzles[id].title}</h2>
+							<h2>{store.puzzleFetch[id].name_of_puzzle}</h2>
 						</Card.Title>
 					</Row>
-					{/* why does the above not work? */}
 					<Row>
 						<Col className="text-center">
 							<Row>
-								<Card.Img src="https://via.placeholder.com/400x250.png" />
+								<Card.Img src={store.puzzleFetch[id].picture_of_box} />
 							</Row>
 							<Row>{paginationBasic}</Row>
 						</Col>
 						{/* why do these columns not work. I want image on left side  */}
 						<Col>
-							<Card.Text>{store.puzzles[id].text}</Card.Text>
-
 							<Card.Text className="text-center">
-								<strong>Description:</strong> <p>{store.puzzles[id].text}</p>
+								<strong>Description:</strong>{" "}
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+									exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+									irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+									pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+									deserunt mollit anim id est laborum.
+								</p>
 								<br />
-								<strong>Ages:</strong> <p>{store.puzzles[id].ages}</p>
+								<strong>Ages:</strong> <p>{store.puzzleFetch[id].age_range}</p>
 								<br />
-								<strong>No. pieces:</strong> <p>{store.puzzles[id].pieces}</p>
+								<strong>No. pieces:</strong> <p>{store.puzzleFetch[id].number_of_pieces}</p>
 								<br />
-								<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
+								<strong>Theme:</strong> <p>{store.puzzleFetch[id].category}</p>
 								{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
 									<React.Fragment>
 										<Button variant="success" className="text-center">
