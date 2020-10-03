@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
+	const base_url = "https://3000-e5c3e794-7626-4d37-8c3f-4119eb7cf3f1.ws-us02.gitpod.io/";
 	return {
 		store: {
 			user: {
@@ -162,6 +162,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getPuzzles: () => {
 				return fetch(base_url + "/puzzle")
+					.then(res => res.json())
+					.then(data => setStore({ puzzleFetch: data }));
+			},
+			getPuzzle: id => {
+				fetch(base_url + `/puzzle/${id}`)
 					.then(res => res.json())
 					.then(data => setStore({ puzzleFetch: data }));
 			},

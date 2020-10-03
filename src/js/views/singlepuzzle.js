@@ -35,7 +35,8 @@ export const Singlepuzzle = props => {
 			<Card>
 				<Card.Body>
 					{/* <Card.Title>Name</Card.Title> */}
-					<Card.Title>{store.puzzles[id].title}</Card.Title>
+					<Card.Title>{store.puzzleFetch[id].title}</Card.Title>
+					{/* all of these need to check PuzzleFetch now */}
 					<Row className="d-flex justify-content-center">
 						<Card.Title>
 							<h2>{store.puzzles[id].title}</h2>

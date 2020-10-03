@@ -78,10 +78,11 @@ export const Swap = props => {
 					<Form.Label>Category</Form.Label>
 					<Form.Control as="select" onChange={e => setCategory(e.target.value)}>
 						<option>Geography</option>
-						<option>Cars</option>
-						<option>Houses</option>
-						<option>Landscaping</option>
-						<option>Celebrity</option>
+						<option>Animals</option>
+						<option>Nostalgia</option>
+						<option>Americana</option>
+						<option>Landscapes</option>
+						<option>Other</option>
 					</Form.Control>
 				</Form.Group>
 				<Button variant="success" type="submit">
