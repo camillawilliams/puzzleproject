@@ -22,6 +22,7 @@ export const Singlepuzzle = props => {
 			</Pagination.Item>
 		);
 	}
+	console.log("the id: ", id, store.puzzleFetch);
 
 	const paginationBasic = (
 		<div>
@@ -32,55 +33,63 @@ export const Singlepuzzle = props => {
 
 	return (
 		<Container>
-			<Card>
-				<Card.Body>
-					{/* all of these need to check PuzzleFetch now */}
-					<Row className="d-flex justify-content-center">
-						<Card.Title>
-							<h2>{store.puzzleFetch[id].name_of_puzzle}</h2>
-						</Card.Title>
-					</Row>
-					<Row>
-						<Col className="text-center">
-							<Row>
-								<Card.Img src={store.puzzleFetch[id].picture_of_box} />
+			{store.puzzleFetch.length > 0 ? (
+				typeof store.puzzleFetch[id] !== "undefined" ? (
+					<Card>
+						<Card.Body>
+							{/* all of these need to check PuzzleFetch now */}
+							<Row className="d-flex justify-content-center">
+								<Card.Title>
+									<h2>{store.puzzleFetch[id].name_of_puzzle}</h2>
+								</Card.Title>
 							</Row>
-							<Row>{paginationBasic}</Row>
-						</Col>
-						{/* why do these columns not work. I want image on left side  */}
-						<Col>
-							<Card.Text className="text-center">
-								<strong>Description:</strong>{" "}
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-									exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-									irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-									pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-									deserunt mollit anim id est laborum.
-								</p>
-								<br />
-								<strong>Ages:</strong> <p>{store.puzzleFetch[id].age_range}</p>
-								<br />
-								<strong>No. pieces:</strong> <p>{store.puzzleFetch[id].number_of_pieces}</p>
-								<br />
-								<strong>Theme:</strong> <p>{store.puzzleFetch[id].category}</p>
-								{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
-									<React.Fragment>
-										<Button variant="success" className="text-center">
-											<Link to={`/swapcart/${id}`}>Add to Cart</Link>
-										</Button>
-									</React.Fragment>
-								) : (
-									<Button variant="success">
-										<Link to="/swap">Please Upload Your Puzzle to start SWAPING</Link>
-									</Button>
-								)}
-							</Card.Text>
-						</Col>
-					</Row>
-				</Card.Body>
-			</Card>
+							<Row>
+								<Col className="text-center">
+									<Row>
+										<Card.Img src={store.puzzleFetch[id].picture_of_box} />
+									</Row>
+									<Row>{paginationBasic}</Row>
+								</Col>
+								{/* why do these columns not work. I want image on left side  */}
+								<Col>
+									<Card.Text className="text-center">
+										<strong>Description:</strong>{" "}
+										<p>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+											tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+											quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+											consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+											cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+											non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+										</p>
+										<br />
+										<strong>Ages:</strong> <p>{store.puzzleFetch[id].age_range}</p>
+										<br />
+										<strong>No. pieces:</strong> <p>{store.puzzleFetch[id].number_of_pieces}</p>
+										<br />
+										<strong>Theme:</strong> <p>{store.puzzleFetch[id].category}</p>
+										{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
+											<React.Fragment>
+												<Button variant="success" className="text-center">
+													<Link to={`/swapcart/${id}`}>Add to Cart</Link>
+												</Button>
+											</React.Fragment>
+										) : (
+											<Button variant="success">
+												<Link to="/swap">Please Upload Your Puzzle to start SWAPING</Link>
+											</Button>
+										)}
+									</Card.Text>
+								</Col>
+							</Row>
+						</Card.Body>
+					</Card>
+				) : (
+					<h3>Puzzle Not Found</h3>
+				)
+			) : (
+				<h3>Loading...</h3>
+			)}
 		</Container>
 	);
 };
