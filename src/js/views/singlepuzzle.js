@@ -63,14 +63,8 @@ export const Singlepuzzle = props => {
 								<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
 								{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
 									<React.Fragment>
-										<Button
-											onClick={() => actions.createSubscription}
-											variant="success"
-											className="text-center">
-											Swap It!
-										</Button>
 										<Button variant="success" className="text-center">
-											<Link to={`/swapcart/${id}`}>Swap It!</Link>
+											<Link to={`/swapcart/${id}`}>Add to Cart</Link>
 										</Button>
 									</React.Fragment>
 								) : (
