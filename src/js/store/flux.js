@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
+	const base_url = "https://3000-e5c3e794-7626-4d37-8c3f-4119eb7cf3f1.ws-us02.gitpod.io/";
 	return {
 		store: {
 			user: {
@@ -20,44 +20,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				password: ""
 			},
 			puzzleFetch: [],
-			puzzles: [
-				{
-					img: "https://via.placeholder.com/300",
-					pieces: 750,
-					title: "Puzzle 1",
-					ages: "12+",
-					theme: "animals",
-					text:
-						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-				},
-				{
-					img: "https://via.placeholder.com/300",
-					title: "Puzzle 2",
-					pieces: 450,
-					ages: "6+",
-					theme: "floral",
-					text:
-						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-				},
-				{
-					img: "https://via.placeholder.com/300",
-					title: "Puzzle 3",
-					pieces: 650,
-					theme: "I Spy",
-					ages: "3+",
-					text:
-						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-				},
-				{
-					img: "https://via.placeholder.com/300",
-					title: "Puzzle 4",
-					pieces: 1000,
-					theme: "abstract",
-					ages: "4+",
-					text:
-						"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-				}
-			],
 			shipping: [
 				{
 					arrivalDate: "",
@@ -198,6 +160,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getPuzzles: () => {
 				return fetch(base_url + "/puzzle")
+					.then(res => res.json())
+					.then(data => setStore({ puzzleFetch: data }))
+					.then(res => console.log(getStore()));
+			},
+			getPuzzle: (data, id) => {
+				fetch(base_url + `/puzzle/${id}`)
 					.then(res => res.json())
 					.then(data => setStore({ puzzleFetch: data }));
 			},
