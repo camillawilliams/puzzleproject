@@ -204,6 +204,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(res => res);
 			},
+			createSubscription: () => {
+				return fetch("https://api.sandbox.paypal.com/v1/billing/subscriptions", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+						Authorization:
+							"Bearer A21AAJEuIg5t4Ibv5VY4oM_MR0yWNLQwGKKEZoajvQ2ToTkG5CcT9NXWRA3qwOUBsh5h2SegljitPCO8slrMQq4Ga8sN3eqUw"
+					},
+					body: JSON.stringify({
+						intent: "CAPTURE",
+						purchase_units: [
+							{
+								amount: {
+									currency_code: "USD",
+									value: "300.00"
+								}
+							}
+						]
+					})
+				});
+			},
+			createProduct: () => {
+				return fetch("https://api.sandbox.paypal.com/v1/catalogs/products", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+						Authorization:
+							"Bearer A21AAJEuIg5t4Ibv5VY4oM_MR0yWNLQwGKKEZoajvQ2ToTkG5CcT9NXWRA3qwOUBsh5h2SegljitPCO8slrMQq4Ga8sN3eqUw"
+					},
+					body: JSON.stringify({
+						name: "Video Streaming Service",
+						description: "Video streaming service",
+						type: "SERVICE",
+						category: "SOFTWARE",
+						image_url: "https://example.com/streaming.jpg",
+						home_url: "https://example.com/home"
+					})
+				});
+			},
+			// createSubscription: function(data, actions) {
+			// 	return actions.subscription.create({
+			// 		plan_id: "P-3K04700213089884AL54KALI"
+			// 	});
+			// },
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

@@ -14,6 +14,7 @@ import { Footer } from "./component/footer";
 import { Upload } from "./component/upload";
 import { Track } from "./component/track";
 import { Paypal } from "./views/paypal";
+import { PaypalButton } from "./component/paypalbutton";
 import { Swap } from "./views/swap";
 import { Report } from "./views/report";
 import { Swapcart } from "./views/swapcart";
