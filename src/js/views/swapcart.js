@@ -22,48 +22,57 @@ export const Swapcart = props => {
 
 	return (
 		<div className="cart">
-			<h3>Swap Cart</h3>
+			<h3 className="text-right"> Swap Cart</h3>
 			<Container>
 				<Card>
 					<Card.Body>
 						{/* <Card.Title>Name</Card.Title>
 						<Card.Title>{store.puzzles[id].title}</Card.Title> */}
-						<Row className="d-flex justify-content-center">
+						<Row className="justify-content-center">
 							<Card.Title>
-								<h2>{store.puzzles[id].title}</h2>
+								<h4>{store.puzzles[id].title}</h4>
 							</Card.Title>
 						</Row>
 						{/* why does the above not work? */}
-						<Row>
-							<Col className="text-center">
+						<Row className="justify-content-center">
+							<Col className="text-center" xs={6} md={4}>
 								<Row>
-									<Card.Img src="https://via.placeholder.com/400x250.png" />
+									<Card.Img src="https://via.placeholder.com/50x50.png" />
 								</Row>
-							</Col>
+								{/* <Card.Text>{store.puzzles[id].text}</Card.Text> */}
+
+								<Card.Text className="text-center">
+									<strong>Description:</strong> <p>{store.puzzles[id].text}</p>
+									<br />
+									{/* </Col>
 							{/* why do these columns not work. I want image on left side  */}
-							<Col>
+									{/* <Col>
 								<Card.Text>{store.puzzles[id].text}</Card.Text>
 
 								<Card.Text className="text-center">
 									<strong>Description:</strong> <p>{store.puzzles[id].text}</p>
 									<br />
-									<strong>Ages:</strong> <p>{store.puzzles[id].ages}</p>
+									{/* <strong>Ages:</strong> <p>{store.puzzles[id].ages}</p>
 									<br />
 									<strong>No. pieces:</strong> <p>{store.puzzles[id].pieces}</p>
 									<br />
-									<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p>
+									<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p> */}
 								</Card.Text>
 							</Col>
-						</Row>
+						</Row>{" "}
 					</Card.Body>
 				</Card>
 			</Container>
 			<br />
-			<p>Please subscribe in order to start SWAPING puzzles.</p>
+			<p> Included in your subscription</p>
+			<br />
+			<p> Ship to:</p>
+
+			{/* <p>Please subscribe in order to start SWAPING puzzles.</p>
 
 			<Button onClick={() => actions.createSubscription} variant="success" className="text-center">
 				Subscribe
-			</Button>
+			</Button> */}
 		</div>
 	);
 };

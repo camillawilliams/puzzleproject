@@ -160,6 +160,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
+
+			getAddress: (full_name, address, city, state, zip) => {
+				return fetch(base_url + "/swapcart", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						full_name: full_name,
+						address: address,
+						city: city,
+						state: state,
+						zip: zip
+					})
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw new Error(resp.statusText);
+						}
+						return resp.json();
+					})
+					.then(data => {
+						let store = getStore();
+						store.user = {
+							token: data.jwt,
+							info: data.user
+						};
+						setStore(store);
+						return true;
+					})
+					.catch(err => {
+						console.error(err);
+						return false;
+					});
+			},
+
 			getPuzzles: () => {
 				return fetch(base_url + "/puzzle")
 					.then(res => res.json())
