@@ -21,7 +21,8 @@ export const Swap = props => {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try {
-			let resp = await actions.swapPuzzle(puzzleName, puzzlePicture, boxPicture, number, age, category);
+			let userid = store.user.info.id;
+			let resp = await actions.swapPuzzle(puzzleName, puzzlePicture, boxPicture, number, age, category, userid);
 			console.log(resp);
 			if (resp) {
 				history.push("/puzzles");
@@ -92,9 +93,9 @@ export const Swap = props => {
 			<br />
 			<p>Please subscribe in order to start SWAPING puzzles.</p>
 
-			<Button onClick={() => actions.createSubscription} variant="success" className="text-center">
+			{/* <Button onClick={() => actions.createSubscription} variant="success" className="text-center">
 				Subscribe
-			</Button>
+			</Button> */}
 		</div>
 	);
 };

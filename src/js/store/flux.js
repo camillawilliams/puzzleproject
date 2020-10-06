@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-e5c3e794-7626-4d37-8c3f-4119eb7cf3f1.ws-us02.gitpod.io/";
+	const base_url = "https://3000-f7ce1416-051d-4076-a83d-d6bfcec27bdb.ws-us02.gitpod.io";
 	return {
 		store: {
 			user: {
@@ -8,7 +8,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				token: null,
 				info: null
 			},
-
 			register: {
 				full_name: "",
 				email: "",
@@ -29,6 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		swapPuzzle: [{}],
+		swapCart: [],
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -39,7 +39,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
 			},
-
 			login: (username, password) => {
 				return fetch(base_url + "/login", {
 					method: "POST",
@@ -66,6 +65,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							info: data.user
 						};
 						setStore(store);
+						sessionStorage.setItem("currentUser", JSON.stringify(data));
+						sessionStorage.setItem("loggedIn", true);
 						return true;
 					})
 					.catch(err => {
@@ -73,7 +74,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-
+			isLoggedIn: () => {
+				const store = getStore();
+				if (sessionStorage.getItem("currentUser")) {
+					store.user = {
+						loggedIn: sessionStorage.getItem("loggedIn")
+					};
+					setStore(store);
+				}
+			},
 			logout: () => {
 				setStore({
 					user: {
@@ -84,7 +93,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 			},
-
 			registerPage: (full_name, email, address, city, state, zip, username, password) => {
 				return fetch(base_url + "/register", {
 					method: "POST",
@@ -122,42 +130,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-
-			getAddress: (full_name, address, city, state, zip) => {
-				return fetch(base_url + "/swapcart", {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						full_name: full_name,
-						address: address,
-						city: city,
-						state: state,
-						zip: zip
-					})
-				})
-					.then(resp => {
-						if (!resp.ok) {
-							throw new Error(resp.statusText);
-						}
-						return resp.json();
-					})
-					.then(data => {
-						let store = getStore();
-						store.user = {
-							token: data.jwt,
-							info: data.user
-						};
-						setStore(store);
-						return true;
-					})
-					.catch(err => {
-						console.error(err);
-						return false;
-					});
+			getAddress: () => {
+				return fetch(base_url + "/user/" + store.user.info)
+					.then(res => res.json())
+					.then(data => setStore({ user: data }));
 			},
-
+			addtoCart: puzzle => {
+				const store = getStore();
+				setStore({ swapCart: [puzzle] });
+			},
+			getUser: () => {
+				const store = getStore();
+				return fetch(base_url + "/user/" + store.user.info.id)
+					.then(res => res.json())
+					.then(data => setStore({ user: { ...store.user, info: data } }));
+			},
 			getPuzzles: () => {
 				return fetch(base_url + "/puzzle")
 					.then(res => res.json())
@@ -169,7 +156,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ puzzleFetch: data }));
 			},
-
 			track: trackingId => {
 				return (
 					fetch(
@@ -183,7 +169,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch(err => err)
 				);
 			},
-			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category) => {
+			swapPuzzle: async (puzzleName, puzzlePicture, boxPicture, number, ageRange, category, owner_id) => {
 				let data = {
 					name_of_puzzle: puzzleName,
 					picture_of_puzzle: puzzlePicture,
@@ -192,21 +178,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					age_range: ageRange,
 					category: category,
 					is_available: true,
-					owner_id: 1
+					owner_id: owner_id
 				};
-
 				let formData = new FormData();
-
 				for (var key in data) {
 					formData.append(key, data[key]);
 				}
-
-				return fetch(base_url + "/puzzle", {
+				let response = await fetch(base_url + "/puzzle", {
 					method: "POST",
 					body: formData
-				})
-					.then(res => res.json())
-					.then(res => res);
+				});
+				if (response.ok) {
+					getActions().getUser();
+					getActions().getPuzzles();
+					return true;
+				} else {
+					return false;
+				}
 			},
 			changeColor: (index, color) => {
 				//get the store
