@@ -39,6 +39,7 @@ const Layout = () => {
 						<Route exact path="/singlepuzzle/:id">
 							<Singlepuzzle />
 						</Route>
+
 						<Route exact path="/upload">
 							<Upload />
 						</Route>
@@ -62,7 +63,7 @@ const Layout = () => {
 						<Route exact path="/paypal">
 							<Paypal />
 						</Route>
-						<Route exact path="/swapcart/:id">
+						<Route exact path="/swapcart">
 							<Swapcart />
 						</Route>
 						<Route>

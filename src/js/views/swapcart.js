@@ -13,66 +13,65 @@ import Form from "react-bootstrap/Form";
 export const Swapcart = props => {
 	const { store, actions } = useContext(Context);
 	const [cart, setCart] = useState([]);
-	const [puzzles, setPuzzles] = useState({});
-	const { id } = useParams();
-
-	const addToCart = () => puzzle => {
-		setCart([...cart, puzzle]);
-	};
+	const [puzzleFetch, setPuzzleFetch] = useState({});
 
 	return (
-		<div className="cart">
-			<h3 className="text-right"> Swap Cart</h3>
-			<Container>
-				<Card>
-					<Card.Body>
-						{/* <Card.Title>Name</Card.Title>
-						<Card.Title>{store.puzzles[id].title}</Card.Title> */}
-						<Row className="justify-content-center">
-							<Card.Title>
-								<h4>{store.puzzles[id].title}</h4>
-							</Card.Title>
-						</Row>
-						{/* why does the above not work? */}
-						<Row className="justify-content-center">
-							<Col className="text-center" xs={6} md={4}>
-								<Row>
-									<Card.Img src="https://via.placeholder.com/50x50.png" />
+		<>
+			{store.swapCart != undefined && store.swapCart.length > 0 ? (
+				<div className="cart">
+					<h3 className="text-right"> Swap Cart</h3>
+					<Container>
+						<Card>
+							<Card.Body>
+								{/* all of these need to check PuzzleFetch now */}
+								<Row className="d-flex justify-content-center">
+									<Card.Title>
+										<h2>{store.swapCart[0].name_of_puzzle}</h2>
+									</Card.Title>
 								</Row>
-								{/* <Card.Text>{store.puzzles[id].text}</Card.Text> */}
 
+								<Col className="text-center">
+									<Row>
+										<Card.Img src={store.swapCart[0].picture_of_box} />
+									</Row>
+								</Col>
 								<Card.Text className="text-center">
-									<strong>Description:</strong> <p>{store.puzzles[id].text}</p>
-									<br />
-									{/* </Col>
-							{/* why do these columns not work. I want image on left side  */}
-									{/* <Col>
-								<Card.Text>{store.puzzles[id].text}</Card.Text>
-
-								<Card.Text className="text-center">
-									<strong>Description:</strong> <p>{store.puzzles[id].text}</p>
-									<br />
-									{/* <strong>Ages:</strong> <p>{store.puzzles[id].ages}</p>
-									<br />
-									<strong>No. pieces:</strong> <p>{store.puzzles[id].pieces}</p>
-									<br />
-									<strong>Theme:</strong> <p>{store.puzzles[id].theme}</p> */}
+									<strong>Description:</strong>{" "}
+									<p>
+										cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+										proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+									</p>
 								</Card.Text>
-							</Col>
-						</Row>{" "}
-					</Card.Body>
-				</Card>
-			</Container>
-			<br />
-			<p> Included in your subscription</p>
-			<br />
-			<p> Ship to:</p>
+							</Card.Body>
+						</Card>
+					</Container>
+					<br />
+					<p>Included in your subscription</p>
+					<br />
+					<p>
+						{" "}
+						Ship to:
+						<br />
+						{store.user && store.user.info.full_name}
+						<br />
+						{store.user && store.user.info.address}
+						<br />
+						{store.user && store.user.info.city}
+						{", "} {store.user && store.user.info.state} {store.user && store.user.info.zip}{" "}
+					</p>
+					<br />
 
-			{/* <p>Please subscribe in order to start SWAPING puzzles.</p>
+					<p>Please note that we will ship your order as soon as we receive your puzzle</p>
 
-			<Button onClick={() => actions.createSubscription} variant="success" className="text-center">
-				Subscribe
-			</Button> */}
-		</div>
+					<Button variant="success" type="submit">
+						Submit Order
+					</Button>
+					<br />
+					<br />
+				</div>
+			) : (
+				<h1>...loading</h1>
+			)}
+		</>
 	);
 };

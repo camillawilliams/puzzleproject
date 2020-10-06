@@ -22,7 +22,8 @@ export const Singlepuzzle = props => {
 			</Pagination.Item>
 		);
 	}
-	console.log("the id: ", id, store.puzzleFetch);
+	// console.log("the id: ", id, store.puzzleFetch);
+	console.log("the id: ", store.puzzleFetch[id]);
 
 	const paginationBasic = (
 		<div>
@@ -70,8 +71,11 @@ export const Singlepuzzle = props => {
 										<strong>Theme:</strong> <p>{store.puzzleFetch[id].category}</p>
 										{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
 											<React.Fragment>
-												<Button variant="success" className="text-center">
-													<Link to={`/swapcart/${id}`}>Add to Cart</Link>
+												<Button
+													variant="success"
+													onClick={() => actions.addtoCart(store.puzzleFetch[id])}
+													className="text-center">
+													<Link to="/swapcart">Add to Cart</Link>
 												</Button>
 											</React.Fragment>
 										) : (
