@@ -26,7 +26,7 @@ export const Singlepuzzle = props => {
 
 	const paginationBasic = (
 		<div>
-			<Pagination size="lg">{items}</Pagination>
+			<Pagination size="sm">{items}</Pagination>
 		</div>
 	);
 	//how to render the above inside of return

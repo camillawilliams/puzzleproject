@@ -28,4 +28,10 @@ body{
     padding-left: 235px;
     border-bottom-width: 100px;}
     
-    
+    .footer {
+        background-color: $green;
+        height: 60px;
+          position: fixed;
+    bottom: 0;
+    width: 100%
+    }
