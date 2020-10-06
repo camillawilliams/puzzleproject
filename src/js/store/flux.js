@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const base_url = "https://3000-e5c3e794-7626-4d37-8c3f-4119eb7cf3f1.ws-us02.gitpod.io/";
+	const base_url = "https://3000-f8d3c0ed-ee3c-4577-a0e7-e213706893bf.ws-us02.gitpod.io";
 	return {
 		store: {
 			user: {
@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				token: null,
 				info: null
 			},
+			subscribed: false,
 
 			register: {
 				full_name: "",
@@ -208,13 +209,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(res => res);
 			},
-			createSubscription: () => {
-				return fetch("https://api.sandbox.paypal.com/v1/billing/subscriptions", {
+			createOrders: () => {
+				return fetch("https://api.sandbox.paypal.com/v2/checkout/orders/", {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",
 						Authorization:
-							"Bearer A21AAJEuIg5t4Ibv5VY4oM_MR0yWNLQwGKKEZoajvQ2ToTkG5CcT9NXWRA3qwOUBsh5h2SegljitPCO8slrMQq4Ga8sN3eqUw"
+							"Bearer A21AAKYIA_BszPv_0-2QgfeFuZdEpCYnH9NQ-ySbmAMRtauTI0YPFie5Axjv6rRcu8HNxm2pS9jYKxiq80U26_h-J4QkEgQrQ"
 					},
 					body: JSON.stringify({
 						intent: "CAPTURE",
@@ -235,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: {
 						"content-type": "application/json",
 						Authorization:
-							"Bearer A21AAJEuIg5t4Ibv5VY4oM_MR0yWNLQwGKKEZoajvQ2ToTkG5CcT9NXWRA3qwOUBsh5h2SegljitPCO8slrMQq4Ga8sN3eqUw"
+							"Bearer A21AAKYIA_BszPv_0-2QgfeFuZdEpCYnH9NQ-ySbmAMRtauTI0YPFie5Axjv6rRcu8HNxm2pS9jYKxiq80U26_h-J4QkEgQrQ"
 					},
 					body: JSON.stringify({
 						name: "Video Streaming Service",
@@ -247,11 +248,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				});
 			},
-			// createSubscription: function(data, actions) {
-			// 	return actions.subscription.create({
-			// 		plan_id: "P-3K04700213089884AL54KALI"
-			// 	});
-			// },
+			createSubscription: () => {
+				const store = getStore();
+				store.subscribed = true;
+				setStore(store);
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

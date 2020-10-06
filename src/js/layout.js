@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./views/home";
 import { Puzzles } from "./views/puzzles";
 import { Singlepuzzle } from "./views/singlepuzzle";
@@ -13,9 +12,9 @@ import { RegisterPage } from "./views/registerpage";
 import { Footer } from "./component/footer";
 import { Upload } from "./component/upload";
 import { Track } from "./component/track";
-import { Paypal } from "./views/paypal";
-import { PaypalButton } from "./component/paypalbutton";
+import { Subscribe } from "./component/subscribe";
 import { Swap } from "./views/swap";
+import { ModalBox } from "./component/modalbox";
 import { Report } from "./views/report";
 import { Swapcart } from "./views/swapcart";
 
@@ -60,8 +59,8 @@ const Layout = () => {
 						<Route exact path="/swap">
 							<Swap />
 						</Route>
-						<Route exact path="/paypal">
-							<Paypal />
+						<Route exact path="/subscribe">
+							<Subscribe />
 						</Route>
 						<Route exact path="/swapcart/:id">
 							<Swapcart />
