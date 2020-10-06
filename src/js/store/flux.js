@@ -8,7 +8,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				token: null,
 				info: null
 			},
-
 			register: {
 				full_name: "",
 				email: "",
@@ -30,7 +29,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		swapPuzzle: [{}],
 		swapCart: [],
-
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -41,7 +39,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
 			},
-
 			login: (username, password) => {
 				return fetch(base_url + "/login", {
 					method: "POST",
@@ -86,7 +83,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore(store);
 				}
 			},
-
 			logout: () => {
 				setStore({
 					user: {
@@ -97,7 +93,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 			},
-
 			registerPage: (full_name, email, address, city, state, zip, username, password) => {
 				return fetch(base_url + "/register", {
 					method: "POST",
@@ -135,25 +130,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					});
 			},
-
 			getAddress: () => {
 				return fetch(base_url + "/user/" + store.user.info)
 					.then(res => res.json())
 					.then(data => setStore({ user: data }));
 			},
-
 			addtoCart: puzzle => {
 				const store = getStore();
 				setStore({ swapCart: [puzzle] });
 			},
-
 			getUser: () => {
 				const store = getStore();
 				return fetch(base_url + "/user/" + store.user.info.id)
 					.then(res => res.json())
-					.then(data => setStore({ ...user, info: data }));
+					.then(data => setStore({ user: { ...store.user, info: data } }));
 			},
-
 			getPuzzles: () => {
 				return fetch(base_url + "/puzzle")
 					.then(res => res.json())
@@ -165,7 +156,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ puzzleFetch: data }));
 			},
-
 			track: trackingId => {
 				return (
 					fetch(
@@ -179,7 +169,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch(err => err)
 				);
 			},
-			swapPuzzle: (puzzleName, puzzlePicture, boxPicture, number, ageRange, category, owner_id) => {
+			swapPuzzle: async (puzzleName, puzzlePicture, boxPicture, number, ageRange, category, owner_id) => {
 				let data = {
 					name_of_puzzle: puzzleName,
 					picture_of_puzzle: puzzlePicture,
@@ -190,20 +180,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					is_available: true,
 					owner_id: owner_id
 				};
-
 				let formData = new FormData();
-
 				for (var key in data) {
 					formData.append(key, data[key]);
 				}
-
-				return fetch(base_url + "/puzzle", {
+				let response = await fetch(base_url + "/puzzle", {
 					method: "POST",
 					body: formData
-				})
-					.then(res => res.json())
-					.then(res => res)
-					.then(() => getActions().getUser());
+				});
+				if (response.ok) {
+					getActions().getUser();
+					getActions().getPuzzles();
+					return true;
+				} else {
+					return false;
+				}
 			},
 			changeColor: (index, color) => {
 				//get the store
