@@ -9,7 +9,6 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { ModalBody } from "react-bootstrap/ModalBody";
-import Alert from "react-bootstrap/Alert";
 
 export const Swap = props => {
 	let history = useHistory();
@@ -25,10 +24,14 @@ export const Swap = props => {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try {
-			let resp = await actions.swapPuzzle(puzzleName, puzzlePicture, boxPicture, number, age, category);
+			let userid = store.user.info.id;
+			let resp = await actions.swapPuzzle(puzzleName, puzzlePicture, boxPicture, number, age, category, userid);
 			console.log(resp);
 			if (resp) {
-				setWarning("You have successfully uploaded your puzzle!");
+				actions.setAlert({
+					message: "You have successfully uploaded your puzzle!",
+					type: "success"
+				});
 				history.push("/puzzles");
 			} else {
 				console.error("failed to upload puzzle");
@@ -40,11 +43,6 @@ export const Swap = props => {
 
 	return (
 		<>
-			{warning !== "" && (
-				<Alert className="text-center" variant="success">
-					{warning}
-				</Alert>
-			)}
 			<div className="container">
 				<h1>Enter Your Puzzle Info For Swap</h1>
 				<h4>Upload Puzzle</h4>
@@ -100,12 +98,12 @@ export const Swap = props => {
 						Upload
 					</Button>
 				</Form>
+
 				<br />
 				<p>Please subscribe in order to start SWAPING puzzles.</p>
-				{/* if suscribed is true set it to false otherwise true */}
-				<Button onClick={() => actions.createSubscription()} variant="success" className="submit">
-					Subscribe
-				</Button>
+				{/* <Button onClick={() => actions.createSubscription} variant="success" className="text-center">
+                Subscribe
+            </Button> */}
 			</div>
 		</>
 	);

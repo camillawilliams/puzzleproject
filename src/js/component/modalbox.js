@@ -20,7 +20,8 @@ export const ModalBox = props => {
 			<div>
 				<>
 					<Button variant="primary" onClick={handleShow}>
-						Launch demo modal
+						You have successfully uploaded your puzzle!
+						{/* We want to insert a link to lead to the subscribtion button/page */}
 					</Button>
 
 					<Modal show={show} onHide={handleClose}>
