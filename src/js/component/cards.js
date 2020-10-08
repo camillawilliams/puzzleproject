@@ -27,7 +27,7 @@ export const CardRow = props => {
 									<br />
 									Ages: {item.age_range}
 								</Card.Text>
-								{store.user.info != null && store.user.info.puzzles_owned.length > 0 ? (
+								{store.user.info != null ? (
 									<React.Fragment>
 										<Button variant="success">
 											<Link to={`/singlepuzzle/${index}`}>See More</Link>
