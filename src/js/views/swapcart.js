@@ -19,14 +19,16 @@ export const Swapcart = props => {
 		<>
 			{store.swapCart != undefined && store.swapCart.length > 0 ? (
 				<div className="cart">
-					<h3 className="text-right"> Swap Cart</h3>
-					<Container>
+					<h2 className="text-center"> Swap Cart</h2>
+					<br />
+					<br />
+					<Container className="cart-container">
 						<Card>
 							<Card.Body>
 								{/* all of these need to check PuzzleFetch now */}
 								<Row className="d-flex justify-content-center">
 									<Card.Title>
-										<h2>{store.swapCart[0].name_of_puzzle}</h2>
+										<h4>{store.swapCart[0].name_of_puzzle}</h4>
 									</Card.Title>
 								</Row>
 
@@ -70,7 +72,7 @@ export const Swapcart = props => {
 					<br />
 				</div>
 			) : (
-				<h1>...loading</h1>
+				<h1>Empty Cart</h1>
 			)}
 		</>
 	);
