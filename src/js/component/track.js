@@ -25,11 +25,20 @@ export const Track = props => {
 
 	const getXML = () => {
 		if (status !== null) {
+			var i;
+			var x = status.length;
+			for (i = 0; i < x; i++) {
+				console.log(status.children[0].children[i].value);
+            }
+            //this should be a map :( )
 			return (
 				<div>
 					<h2>{status.name}</h2>
 					{/* <p>{status.children[0].children[0].children[1].value}</p> */}
 					<p>{status.children[0].children[0].value}</p>
+					<p>{status.children[0].children[1].value}</p>
+					<p>{status.children[0].children[2].value}</p>
+					<p>{status.children[0].children[3].value}</p>
 				</div>
 			);
 		}
@@ -41,7 +50,7 @@ export const Track = props => {
 			<h3>Where&apos;s My Order?</h3>
 
 			<p>
-				<Link onClick={getTracking}>Track me</Link>
+				<Link onClick={getTracking}>Click here to track your most recent order.</Link>
 			</p>
 			{getXML()}
 		</div>
