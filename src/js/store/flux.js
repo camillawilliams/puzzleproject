@@ -8,6 +8,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				token: null,
 				info: null
 			},
+			alert: {
+				visible: false,
+				message: "",
+				type: ""
+			},
+			subscribed: false,
+
 			register: {
 				full_name: "",
 				email: "",
@@ -195,6 +202,68 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else {
 					return false;
 				}
+			},
+			setAlert: alert => {
+				setStore({
+					alert: {
+						visible: true,
+						message: alert.message,
+						type: alert.type
+					}
+				});
+			},
+			hideAlert: () => {
+				setStore({
+					alert: {
+						visible: false,
+						message: "",
+						type: ""
+					}
+				});
+			},
+			createOrders: () => {
+				return fetch("https://api.sandbox.paypal.com/v2/checkout/orders/", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+						Authorization:
+							"Bearer A21AAKYIA_BszPv_0-2QgfeFuZdEpCYnH9NQ-ySbmAMRtauTI0YPFie5Axjv6rRcu8HNxm2pS9jYKxiq80U26_h-J4QkEgQrQ"
+					},
+					body: JSON.stringify({
+						intent: "CAPTURE",
+						purchase_units: [
+							{
+								amount: {
+									currency_code: "USD",
+									value: "300.00"
+								}
+							}
+						]
+					})
+				});
+			},
+			createProduct: () => {
+				return fetch("https://api.sandbox.paypal.com/v1/catalogs/products", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+						Authorization:
+							"Bearer A21AAKYIA_BszPv_0-2QgfeFuZdEpCYnH9NQ-ySbmAMRtauTI0YPFie5Axjv6rRcu8HNxm2pS9jYKxiq80U26_h-J4QkEgQrQ"
+					},
+					body: JSON.stringify({
+						name: "Video Streaming Service",
+						description: "Video streaming service",
+						type: "SERVICE",
+						category: "SOFTWARE",
+						image_url: "https://example.com/streaming.jpg",
+						home_url: "https://example.com/home"
+					})
+				});
+			},
+			createSubscription: () => {
+				const store = getStore();
+				store.subscribed = true;
+				setStore(store);
 			},
 			changeColor: (index, color) => {
 				//get the store

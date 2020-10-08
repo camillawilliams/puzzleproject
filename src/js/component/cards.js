@@ -27,9 +27,17 @@ export const CardRow = props => {
 									<br />
 									Ages: {item.age_range}
 								</Card.Text>
-								<Button variant="success">
-									<Link to={`/singlepuzzle/${index}`}>See More</Link>
-								</Button>
+								{store.user.info != null ? (
+									<React.Fragment>
+										<Button variant="success">
+											<Link to={`/singlepuzzle/${index}`}>See More</Link>
+										</Button>
+									</React.Fragment>
+								) : (
+									<Button variant="success">
+										<Link to="/signin">See More</Link>
+									</Button>
+								)}
 							</Card.Body>
 						</Card>
 					);
