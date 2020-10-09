@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -12,22 +12,35 @@ import Pagination from "react-bootstrap/Pagination";
 export const Singlepuzzle = props => {
 	const { title, data } = props;
 	const { store, actions } = useContext(Context);
+	let history = useHistory();
 	const { id } = useParams();
-	let active = 1;
-	let items = [];
-	for (let number = 1; number <= 2; number++) {
-		items.push(
-			<Pagination.Item key={number} active={number === active}>
-				{number}
-			</Pagination.Item>
-		);
-	}
+	const [active, setActive] = useState(1);
+	const [src, setSrc] = useState(store.puzzleFetch[id].picture_of_box);
+
+	useEffect(
+		() => {
+			if (active === 1) {
+				setSrc(store.puzzleFetch[id].picture_of_box);
+			} else {
+				setSrc(store.puzzleFetch[id].picture_of_puzzle);
+			}
+		},
+		[active]
+	);
+
 	// console.log("the id: ", id, store.puzzleFetch);
 	console.log("the id: ", store.puzzleFetch[id]);
 
 	const paginationBasic = (
 		<div>
-			<Pagination size="sm">{items}</Pagination>
+			<Pagination size="sm">
+				<Pagination.Item key="1" active={active === 1} onClick={e => setActive(1)}>
+					1
+				</Pagination.Item>
+				<Pagination.Item key="2" active={active === 2} onClick={e => setActive(2)}>
+					2
+				</Pagination.Item>
+			</Pagination>
 		</div>
 	);
 	//how to render the above inside of return
@@ -38,7 +51,6 @@ export const Singlepuzzle = props => {
 				typeof store.puzzleFetch[id] !== "undefined" ? (
 					<Card>
 						<Card.Body>
-							{/* all of these need to check PuzzleFetch now */}
 							<Row className="d-flex justify-content-center">
 								<Card.Title>
 									<h2>{store.puzzleFetch[id].name_of_puzzle}</h2>
@@ -47,11 +59,11 @@ export const Singlepuzzle = props => {
 							<Row>
 								<Col className="text-center">
 									<Row>
-										<Card.Img src={store.puzzleFetch[id].picture_of_box} />
+										<Card.Img src={src} />
+										{/* need to constrain these images */}
 									</Row>
 									<Row>{paginationBasic}</Row>
 								</Col>
-								{/* why do these columns not work. I want image on left side  */}
 								<Col>
 									<Card.Text className="text-center">
 										<strong>Description:</strong>{" "}
@@ -73,14 +85,17 @@ export const Singlepuzzle = props => {
 											<React.Fragment>
 												<Button
 													variant="success"
-													onClick={() => actions.addtoCart(store.puzzleFetch[id])}
+													onClick={() => {
+														actions.addtoCart(store.puzzleFetch[id]);
+														history.push("/swap");
+													}}
 													className="text-center">
-													<Link to="/swapcart">Add to Cart</Link>
+													Add to Cart
 												</Button>
 											</React.Fragment>
 										) : (
-											<Button variant="success">
-												<Link to="/swap">Please Upload Your Puzzle to start SWAPING</Link>
+											<Button variant="success" onClick={e => history.push("/swap")}>
+												Please Upload Your Puzzle to start SWAPING
 											</Button>
 										)}
 									</Card.Text>

@@ -13,6 +13,7 @@ export const Track = props => {
 	const [status, setStatus] = useState(null);
 
 	let trackingID = "9405509206094187580404";
+	//let trackingID = "9274890233786806044910";
 
 	async function getTracking() {
 		let tracking = await actions.track(trackingID);
@@ -29,8 +30,9 @@ export const Track = props => {
 			var x = status.length;
 			for (i = 0; i < x; i++) {
 				console.log(status.children[0].children[i].value);
-            }
-            //this should be a map :( )
+			}
+			//this should be a map :( )
+			//
 			return (
 				<div>
 					<h2>{status.name}</h2>
@@ -39,6 +41,7 @@ export const Track = props => {
 					<p>{status.children[0].children[1].value}</p>
 					<p>{status.children[0].children[2].value}</p>
 					<p>{status.children[0].children[3].value}</p>
+					{/* above works for first tracking ID... how to find the pattern?? */}
 				</div>
 			);
 		}
