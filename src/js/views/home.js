@@ -6,6 +6,7 @@ import { CardRow } from "../component/cards";
 import { SignIn } from "./signin";
 import { HomeJumbo } from "../component/homejumbo";
 import { Context } from "../store/appContext";
+import { Footer } from "../component/footer";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -16,7 +17,7 @@ export const Home = () => {
 				<HomeJumbo />
 			</div>
 			<div className="container">
-				<CardRow data={store.puzzleFetch} style={{ height: "300px" }} />
+				<CardRow data={store.puzzleFetch} style={{ height: "200px" }} />
 			</div>
 		</div>
 	);
