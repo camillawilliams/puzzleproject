@@ -87,7 +87,7 @@ export const Singlepuzzle = props => {
 													variant="success"
 													onClick={() => {
 														actions.addtoCart(store.puzzleFetch[id]);
-														history.push("/swap");
+														history.push("/swapcart");
 													}}
 													className="text-center">
 													Add to Cart
