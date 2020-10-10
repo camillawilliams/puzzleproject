@@ -68,7 +68,7 @@ export const Swapcart = props => {
 						</p>
 						<br />
 						<p>
-							Please note that we will ship your order as soon as we receive your puzzle. &nbsp; &nbsp;
+							Please note that we will ship your order as soon as we receive and verify your puzzle. &nbsp; &nbsp;
 							<Button variant="success" type="submit">
 								Submit Order
 							</Button>

@@ -21,7 +21,7 @@ export const Profile = () => {
 						<img
 							className="col-sm-6 rounded-circle"
 							style={{ width: "140px", height: "140px", borderRadius: "70px" }}
-							src={Profilepic}
+							src="https://cdn2.vectorstock.com/i/thumb-large/20/76/man-avatar-profile-vector-21372076.jpg"
 							alt="profilePic"
 						/>
 					</div>

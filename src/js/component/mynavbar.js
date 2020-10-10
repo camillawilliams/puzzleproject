@@ -49,12 +49,6 @@ export const MyNavbar = () => {
 
 						{store.user.token != null && loggedIn ? (
 							<NavDropdown.Item>
-								<Link to="/swap">Upload Your Puzzle</Link>
-							</NavDropdown.Item>
-						) : null}
-
-						{store.user.token != null && loggedIn ? (
-							<NavDropdown.Item>
 								<Link to="/puzzles">Browse Puzzles</Link>
 							</NavDropdown.Item>
 						) : null}
@@ -73,12 +67,19 @@ export const MyNavbar = () => {
 
 						{store.user.token != null && loggedIn ? (
 							<NavDropdown.Item>
-								<Link to="/report">Contact Us</Link>
+								<Link to="/swap">Upload Your Puzzle</Link>
 							</NavDropdown.Item>
 						) : null}
+
 						{store.user.token != null && loggedIn ? (
 							<NavDropdown.Item>
 								<Link to="/subscribe">Subscribe</Link>
+							</NavDropdown.Item>
+						) : null}
+
+						{store.user.token != null && loggedIn ? (
+							<NavDropdown.Item>
+								<Link to="/report">Contact Us</Link>
 							</NavDropdown.Item>
 						) : null}
 

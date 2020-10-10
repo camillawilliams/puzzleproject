@@ -100,7 +100,7 @@ export const Swap = props => {
 				</Form>
 
 				<br />
-				<p>Please subscribe in order to start SWAPING puzzles.</p>
+				{/* <p>Please subscribe in order to start SWAPING puzzles.</p> */}
 				{/* <Button onClick={() => actions.createSubscription} variant="success" className="text-center">
                 Subscribe
             </Button> */}

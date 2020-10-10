@@ -19,7 +19,7 @@ export const SignIn = () => {
 			let resp = await actions.login(username, password);
 			console.log(resp);
 			if (resp) {
-				history.push("/puzzles");
+				history.push("/subscribe");
 			} else {
 				setWarning("Username or Password are not correct");
 			}

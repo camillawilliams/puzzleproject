@@ -5,6 +5,18 @@ import PropTypes from "prop-types";
 export const Subscribe = props => {
 	return (
 		<div className="container">
+			<p>Welcome to Puzzle Swap! We are pleased to have you here. </p>
+			<b />
+			<p>
+				In order to make your experience with us a pleasant one we would like to let you know that a
+				subscription of $5.99/ month is required as well as an upload and shippment of a puzzle of your own.
+			</p>
+			<b />
+			<p>
+				Please subscribe in order to start you Puzzle Swap experience.
+				<p />
+			</p>
+			<b />
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 				<input type="hidden" name="cmd" value="_s-xclick" />
 				<input type="hidden" name="hosted_button_id" value="U9HQFHCLC8YEJ" />
