@@ -76,6 +76,11 @@ export const MyNavbar = () => {
 								<Link to="/report">Contact Us</Link>
 							</NavDropdown.Item>
 						) : null}
+						{store.user.token != null && loggedIn ? (
+							<NavDropdown.Item>
+								<Link to="/subscribe">Subscribe</Link>
+							</NavDropdown.Item>
+						) : null}
 
 						{store.user.token != null ? (
 							<NavDropdown.Item onClick={() => actions.logout()}>

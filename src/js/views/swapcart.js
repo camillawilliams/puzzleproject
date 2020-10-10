@@ -21,7 +21,7 @@ export const Swapcart = props => {
 				<div className="cart">
 					<h2 className="text-center"> Swap Cart</h2>
 					<br />
-					<br />
+
 					<Container className="cart-container">
 						<Card>
 							<Card.Body>
@@ -44,12 +44,15 @@ export const Swapcart = props => {
 										proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 									</p>
 								</Card.Text>
+								<Col>
+									<Row />
+								</Col>
 							</Card.Body>
 						</Card>
 					</Container>
 					<br />
 					<p>Included in your subscription</p>
-					<br />
+
 					<p>
 						{" "}
 						Ship to:
@@ -61,13 +64,13 @@ export const Swapcart = props => {
 						{store.user && store.user.info.city}
 						{", "} {store.user && store.user.info.state} {store.user && store.user.info.zip}{" "}
 					</p>
-					<br />
 
-					<p>Please note that we will ship your order as soon as we receive your puzzle</p>
-
-					<Button variant="success" type="submit">
-						Submit Order
-					</Button>
+					<p>
+						Please note that we will ship your order as soon as we receive your puzzle. &nbsp; &nbsp;
+						<Button variant="success" type="submit">
+							Submit Order
+						</Button>
+					</p>
 					<br />
 					<br />
 				</div>
