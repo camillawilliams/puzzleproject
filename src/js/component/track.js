@@ -29,8 +29,8 @@ export const Track = props => {
 			var x = status.length;
 			for (i = 0; i < x; i++) {
 				console.log(status.children[0].children[i].value);
-            }
-            //this should be a map :( )
+			}
+			//this should be a map :( )
 			return (
 				<div>
 					<h2>{status.name}</h2>
