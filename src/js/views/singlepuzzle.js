@@ -80,7 +80,7 @@ export const Singlepuzzle = props => {
 											</React.Fragment>
 										) : (
 											<Button variant="success">
-												<Link to="/swap">Please Upload Your Puzzle to start SWAPING</Link>
+												<Link to="/swap">Please upload your Puzzle to start SWAPING</Link>
 											</Button>
 										)}
 									</Card.Text>

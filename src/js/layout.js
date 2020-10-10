@@ -17,6 +17,7 @@ import { Swap } from "./views/swap";
 import { ModalBox } from "./component/modalbox";
 import { Report } from "./views/report";
 import { Swapcart } from "./views/swapcart";
+import { Profile } from "./views/profile";
 
 //create your first component
 const Layout = () => {
@@ -71,6 +72,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/swapcart">
 							<Swapcart />
+						</Route>
+						<Route exact path="/profile">
+							<Profile />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

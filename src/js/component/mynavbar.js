@@ -31,7 +31,7 @@ export const MyNavbar = () => {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto" />
-					{loggedIn ? (
+					{store.user.token != null && loggedIn ? (
 						<Form inline>
 							<FormControl type="text" placeholder="Search" className="mr-sm-2" />
 							<Button variant="outline-success">Search</Button>
@@ -39,28 +39,21 @@ export const MyNavbar = () => {
 					) : null}
 					{/* above will only be for signed in people, now contained in mynavbar_signin.js */}
 					<NavDropdown title="Menu" id="basic-nav-dropdown">
-						{store.user.token != null ? (
-							<NavDropdown.Item onClick={() => actions.logout()}>
-								<Link to="/signin">Logout </Link>
-							</NavDropdown.Item>
-						) : (
-							<NavDropdown.Item>
-								<Link to="/signin">Sign In </Link>
-							</NavDropdown.Item>
-						)}
-						{loggedIn ? null : (
-							<NavDropdown.Item>
-								<Link to="/registerpage">Register</Link>
-							</NavDropdown.Item>
-						)}
 						{/* {loggedIn ? <NavDropdown.Item href="/upload">Upload View</NavDropdown.Item> : null} */}
-						{loggedIn ? (
+
+						{store.user.token != null && loggedIn ? (
+							<NavDropdown.Item>
+								<Link to="/profile">Profile</Link>
+							</NavDropdown.Item>
+						) : null}
+
+						{store.user.token != null && loggedIn ? (
 							<NavDropdown.Item>
 								<Link to="/swap">Upload Your Puzzle</Link>
 							</NavDropdown.Item>
 						) : null}
 
-						{loggedIn ? (
+						{store.user.token != null && loggedIn ? (
 							<NavDropdown.Item>
 								<Link to="/puzzles">Browse Puzzles</Link>
 							</NavDropdown.Item>
@@ -72,20 +65,35 @@ export const MyNavbar = () => {
 							</NavDropdown.Item>
 						) : null} */}
 
-						{loggedIn ? (
+						{store.user.token != null && loggedIn ? (
 							<NavDropdown.Item>
 								<Link to="/track">Track Your Order</Link>
 							</NavDropdown.Item>
 						) : null}
 
-						{loggedIn ? (
+						{store.user.token != null && loggedIn ? (
 							<NavDropdown.Item>
 								<Link to="/report">Contact Us</Link>
 							</NavDropdown.Item>
 						) : null}
+
+						{store.user.token != null ? (
+							<NavDropdown.Item onClick={() => actions.logout()}>
+								<Link to="/signin">Logout </Link>
+							</NavDropdown.Item>
+						) : (
+							<NavDropdown.Item>
+								<Link to="/signin">Sign In </Link>
+							</NavDropdown.Item>
+						)}
+						{store.user.token != null && loggedIn ? null : (
+							<NavDropdown.Item>
+								<Link to="/registerpage">Register</Link>
+							</NavDropdown.Item>
+						)}
 					</NavDropdown>
 				</Navbar.Collapse>
-				{loggedIn ? (
+				{store.user.token != null && loggedIn ? (
 					// <span>{cart.length}</span>
 					<Link to="/swapcart">
 						<i className="fas fa-shopping-cart" />
