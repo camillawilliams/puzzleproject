@@ -22,7 +22,7 @@ export const Swapcart = props => {
 					<h2 className="text-center"> Swap Cart</h2>
 					<br />
 
-					<Container className="cart-container">
+					<Container className="float-left cart-container">
 						<Card>
 							<Card.Body>
 								{/* all of these need to check PuzzleFetch now */}
@@ -50,29 +50,33 @@ export const Swapcart = props => {
 							</Card.Body>
 						</Card>
 					</Container>
-					<br />
-					<p>Included in your subscription</p>
 
-					<p>
-						{" "}
-						Ship to:
-						<br />
-						{store.user && store.user.info.full_name}
-						<br />
-						{store.user && store.user.info.address}
-						<br />
-						{store.user && store.user.info.city}
-						{", "} {store.user && store.user.info.state} {store.user && store.user.info.zip}{" "}
-					</p>
+					<br />
+					<div className="text-center-right">
+						<p>Included in your subscription</p>
 
-					<p>
-						Please note that we will ship your order as soon as we receive your puzzle. &nbsp; &nbsp;
-						<Button variant="success" type="submit">
-							Submit Order
-						</Button>
-					</p>
-					<br />
-					<br />
+						<p>
+							{" "}
+							Ship to:
+							<br />
+							{store.user && store.user.info.full_name}
+							<br />
+							{store.user && store.user.info.address}
+							<br />
+							{store.user && store.user.info.city}
+							{", "} {store.user && store.user.info.state} {store.user && store.user.info.zip}{" "}
+						</p>
+						<br />
+						<p>
+							Please note that we will ship your order as soon as we receive your puzzle. &nbsp; &nbsp;
+							<Button variant="success" type="submit">
+								Submit Order
+							</Button>
+						</p>
+
+						<br />
+						<br />
+					</div>
 				</div>
 			) : (
 				<h1>Empty Cart</h1>
