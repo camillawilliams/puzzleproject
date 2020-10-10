@@ -5,11 +5,12 @@ import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 export const CardRow = props => {
 	const { cardData, category, title, data } = props;
 	const { store, actions } = useContext(Context);
+	let history = useHistory();
 	return (
 		<div>
 			{/* <h2 style={{ textAlign: "left" }}>{category}</h2> */}
@@ -29,13 +30,16 @@ export const CardRow = props => {
 								</Card.Text>
 								{store.user.info != null ? (
 									<React.Fragment>
-										<Button variant="success">
-											<Link to={`/singlepuzzle/${index}`}>See More</Link>
+										<Button variant="success" onClick={e => history.push(`/singlepuzzle/${index}`)}>
+											{" "}
+											See More
 										</Button>
 									</React.Fragment>
 								) : (
-									<Button variant="success">
-										<Link to="/signin">See More</Link>
+									<Button variant="success" onClick={e => history.push("/signin")}>
+										{" "}
+										See More
+										{/* <Link to="/signin">See More</Link> */}
 									</Button>
 								)}
 							</Card.Body>
