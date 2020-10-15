@@ -18,6 +18,8 @@ import { ModalBox } from "./component/modalbox";
 import { Report } from "./views/report";
 import { Swapcart } from "./views/swapcart";
 import { Profile } from "./views/profile";
+import { Confirmation } from "./views/confirmation";
+import { Pending } from "./views/pending";
 
 //create your first component
 const Layout = () => {
@@ -89,6 +91,9 @@ const Layout = () => {
 							</Route>
 							<Route exact path="/profile">
 								<Profile />
+							</Route>
+							<Route exact path="/pending">
+								<Pending />
 							</Route>
 							<Route>
 								<h1>Not found!</h1>

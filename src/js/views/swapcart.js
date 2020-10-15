@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -14,6 +14,7 @@ export const Swapcart = props => {
 	const { store, actions } = useContext(Context);
 	const [cart, setCart] = useState([]);
 	const [puzzleFetch, setPuzzleFetch] = useState({});
+	let history = useHistory();
 
 	return (
 		<>
@@ -68,11 +69,18 @@ export const Swapcart = props => {
 						</p>
 						<br />
 						<p>
-							Please note that we will ship your order as soon as we receive and verify your puzzle. &nbsp; &nbsp;
-							<Button variant="success" type="submit">
-								Submit Order
-							</Button>
+							Please note that we will ship your order as soon as we receive and verify your puzzle.
+							&nbsp; &nbsp;
 						</p>
+						<br />
+						<Button
+							variant="success"
+							type="submit"
+							onClick={() => {
+								history.push("/pending");
+							}}>
+							Submit Order
+						</Button>
 
 						<br />
 						<br />
