@@ -4,7 +4,19 @@ body{
     background: $white;
 }
 
+.container {
+    height:100vh; 
+}
+
+//paolo says the above is bad practice-- shouldn't change default classes
+//this was the only way I found to get footer properly placed but for the future should improve it
+
+
+    .scrolling-wrapper {    overflow-x: scroll;    overflow-y: hidden;    white-space: nowrap;   }
+
+
 .jumbo-container{
+        border-radius: 0 !important;
        background-image: 
         linear-gradient(
       rgba(0, 0, 0, 0.5),
@@ -39,19 +51,41 @@ body{
     border-bottom-width: 100px;}
 
    
-    
-    .footer {
-        background-color: $green;
-        height: 60px;
-          position: fixed;
-    bottom: 0;
-    width: 100%
+    .footer{
+      background-color: $green;
+      height: 60px;
+      width: 100%;
     }
+    // .footer {
+    //     background-color: $green;
+    //     height: 60px;
+    // bottom: 0;
+    // width: 100%;
+    // // background-attachment: scroll;
+    // // background-position: 0% 0%;
+    // position: fixed;
+    // margin-top: 25px;
+    // // z-index: 100;
+    // }
 
  h1, .test {font-family: 'Monoton', cursive;
     font-size: 70px;
     text-shadow: 2px 2px 4px #000000}
-    
+
+.mynavbar {
+    margin-bottom: 15px;
+    //padding-right: 15px;
+}
+
+.card-img-top {
+    height: 15vw;
+    object-fit: cover;
+    margin: auto;
+}
+
+//.card-title{
+    //height: 30px;
+//}
 // .Buttons{
 		 
 // 			shape: "rect",
@@ -59,3 +93,16 @@ body{
 // 			layout: "vertical",
 // 			label: "subscribe"
 // 		};
+
+//.cardonly {
+// height: 400px;
+ //width: 200px;
+//}
+
+//.card-deck {
+   // margin-bottom:100px;
+//}
+
+//.card-body{
+    //height: 100px;
+//}

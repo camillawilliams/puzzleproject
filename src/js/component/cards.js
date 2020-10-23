@@ -12,41 +12,49 @@ export const CardRow = props => {
 	const { store, actions } = useContext(Context);
 	let history = useHistory();
 	return (
-		<div>
-			{/* <h2 style={{ textAlign: "left" }}>{category}</h2> */}
-			<CardDeck style={{ height: "300px" }}>
+		<div className="container scrolling-wrapper" id="main-puzzle" style={{ height: "30%" }}>
+			<div className="row">
+				{/* <h2 style={{ textAlign: "left" }}>{category}</h2> */}
+				{/* <CardDeck className="deck" style={{ height: "200px" }}> */}
+				{/* <CardDeck className="deck mb-5"> */}
+
 				{data.map((item, index) => {
 					return (
-						<Card key={index}>
-							<Card.Img variant="top" src={item.picture_of_puzzle} />
-							<Card.Body>
-								<Card.Title>{item.name_of_puzzle}</Card.Title>
-								<Card.Text>
-									{/* Description: {item.text} */}
-									<br />
-									No. Pieces: {item.number_of_pieces}
-									<br />
-									Ages: {item.age_range}
-								</Card.Text>
-								{store.user.info != null ? (
-									<React.Fragment>
-										<Button variant="success" onClick={e => history.push(`/singlepuzzle/${index}`)}>
+						<div className="col-3 mb-4" key={index}>
+							<Card className="cardonly" style={{ width: "100%" }}>
+								<Card.Img variant="top" src={item.picture_of_puzzle} />
+								<Card.Body>
+									<Card.Title>{item.name_of_puzzle}</Card.Title>
+									<Card.Text>
+										{/* Description: {item.text} */}
+										<br />
+										No. Pieces: {item.number_of_pieces}
+										<br />
+										Ages: {item.age_range}
+									</Card.Text>
+									{store.user.info != null ? (
+										<React.Fragment>
+											<Button
+												variant="success"
+												onClick={e => history.push(`/singlepuzzle/${index}`)}>
+												{" "}
+												See More
+											</Button>
+										</React.Fragment>
+									) : (
+										<Button variant="success" onClick={e => history.push("/signin")}>
 											{" "}
 											See More
+											{/* <Link to="/signin">See More</Link> */}
 										</Button>
-									</React.Fragment>
-								) : (
-									<Button variant="success" onClick={e => history.push("/signin")}>
-										{" "}
-										See More
-										{/* <Link to="/signin">See More</Link> */}
-									</Button>
-								)}
-							</Card.Body>
-						</Card>
+									)}
+								</Card.Body>
+							</Card>
+						</div>
 					);
 				})}
-			</CardDeck>
+				{/* </CardDeck> */}
+			</div>
 		</div>
 	);
 };

@@ -186,7 +186,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						//where does the "basename" of my usps name go???
 						// now I think I can call on actions.track in track.js...
 						.then(res => res.text())
-						.then(res => res)
+						//.then(res => res)
 						.catch(err => err)
 				);
 			},

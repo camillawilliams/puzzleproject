@@ -9,6 +9,7 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { ModalBody } from "react-bootstrap/ModalBody";
+import Container from "react-bootstrap/Container";
 
 export const Swap = props => {
 	let history = useHistory();
@@ -43,9 +44,8 @@ export const Swap = props => {
 
 	return (
 		<>
-			<div className="container">
-				<h1>Enter Your Puzzle Info For Swap</h1>
-				<h4>Upload Puzzle</h4>
+			<Container>
+				<h1>Upload Your Puzzle</h1>
 				<Form onSubmit={handleSubmit}>
 					<Form.Group controlId="formGroupPuzzle">
 						<Form.Label>Name of Puzzle</Form.Label>
@@ -104,7 +104,7 @@ export const Swap = props => {
 				{/* <Button onClick={() => actions.createSubscription} variant="success" className="text-center">
                 Subscribe
             </Button> */}
-			</div>
+			</Container>
 		</>
 	);
 };

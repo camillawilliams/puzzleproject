@@ -17,10 +17,10 @@ export const Swapcart = props => {
 	let history = useHistory();
 
 	return (
-		<>
+		<Container>
 			{store.swapCart != undefined && store.swapCart.length > 0 ? (
 				<div className="cart">
-					<h2 className="text-center"> Swap Cart</h2>
+					<h3 className="text-center"> Your Cart</h3>
 					<br />
 
 					<Container className="float-left cart-container">
@@ -89,6 +89,6 @@ export const Swapcart = props => {
 			) : (
 				<h1>Empty Cart</h1>
 			)}
-		</>
+		</Container>
 	);
 };

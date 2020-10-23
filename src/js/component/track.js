@@ -10,17 +10,24 @@ import XMLParser from "react-xml-parser";
 
 export const Track = props => {
 	const { store, actions } = useContext(Context);
-	const [status, setStatus] = useState(null);
+	const [status, setStatus] = useState([]);
 
-	let trackingID = "9405509206094187580404";
+	//let trackingID = "9405509206094187580404";
 	//let trackingID = "9274890233786806044910";
+	let trackingID = "9400116901628130956461";
 
 	async function getTracking() {
 		let tracking = await actions.track(trackingID);
-		console.log(tracking);
-		if (typeof tracking !== "null" && typeof tracking !== "undefined") {
+		console.log("tracking", tracking);
+		// if (typeof tracking !== "null" && typeof tracking !== "undefined") {
+		// 	var xml = new XMLParser().parseFromString(tracking);
+		// 	setStatus(xml);
+		// }
+		if (tracking !== null || tracking !== undefined) {
 			var xml = new XMLParser().parseFromString(tracking);
-			setStatus(xml);
+			console.log("XML", xml);
+			//setStatus(xml.children[0].children[0].children);
+			setStatus(xml.children[0].children);
 		}
 	}
 
@@ -29,14 +36,18 @@ export const Track = props => {
 			var i;
 			var x = status.length;
 			for (i = 0; i < x; i++) {
-				console.log(status.children[0].children[i].value);
+				console.log(status);
 			}
 			//this should be a map :( )
 			//
 
 			return (
-				<div>
-					<h2>{status.name}</h2>
+				<>
+					{status &&
+						status.map((item, index) => {
+							return <div key={index}> {`${item.name}:  ${item.value}`}</div>;
+						})}
+					{/* <h2>{status.name}</h2> */}
 					{/* <p>{status.children[0].children[0].children[1].value}</p> */}
 					{/* {status.children[0].children[0] && */}
 					{/* {status.children[0].length > 0 && */}
@@ -44,14 +55,14 @@ export const Track = props => {
 					{/* return console.log(item.children[0]); */}
 					{/* //<p key={index}>{item.children[index].value}</p> */}
 					{/* })} */}
-					<p>{status.children[0].children[0].value}</p>
+					{/* <p>{status.children[0].children[0].value}</p>
 					<p>{status.children[0].children[1].value}</p>
 					<p>{status.children[0].children[2].value}</p>
 					<p>{status.children[0].children[3].value}</p>
 					<p>{status.children[0].children[4].value}</p>
-					<p>{status.children[0].children[5].value}</p>
+					<p>{status.children[0].children[5].value}</p> */}
 					{/* above works for first tracking ID... how to find the pattern?? */}
-				</div>
+				</>
 			);
 		} else return null;
 	};
@@ -69,6 +80,3 @@ export const Track = props => {
 		</div>
 	);
 };
-
-// example from class
-//

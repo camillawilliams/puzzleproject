@@ -10,19 +10,22 @@ import Row from "react-bootstrap/Row";
 import Pagination from "react-bootstrap/Pagination";
 import Form from "react-bootstrap/Form";
 import Profilepic from "../../img/profilepic3.jpg";
+import avatar from "../../img/avatar.png";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<div className="container-fluid py-5">
+		<div className="container">
 			<div className="card col-7 m-auto">
 				<div className="row">
 					<div className="col-6 card-img float-right p-3">
 						<img
 							className="col-sm-6 rounded-circle"
-							style={{ width: "140px", height: "140px", borderRadius: "70px" }}
-							src="https://cdn2.vectorstock.com/i/thumb-large/20/76/man-avatar-profile-vector-21372076.jpg"
+							//style={{ width: "140px", height: "140px", borderRadius: "70px" }}
+							src={avatar}
 							alt="profilePic"
+							width="100px"
+							height="100px"
 						/>
 					</div>
 					<div className="col-6 p-3">

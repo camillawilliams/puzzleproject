@@ -21,8 +21,8 @@ export const MyNavbar = () => {
 	//});
 
 	return (
-		<div className="mynavbar mx-5" dispay="flex">
-			<Navbar bg="light" expand="lg">
+		<div className="mynavbar" dispay="flex">
+			<Navbar bg="light" expand="lg" className="px-2">
 				<i className="fas fa-puzzle-piece" />
 				&nbsp;
 				<Navbar.Brand href="#home" className="font-weight-bold text-success">
@@ -30,17 +30,11 @@ export const MyNavbar = () => {
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="mr-auto" />
-					{store.user.token != null && loggedIn ? (
-						<Form inline>
-							<FormControl type="text" placeholder="Search" className="mr-sm-2" />
-							<Button variant="outline-success">Search</Button>
-						</Form>
-					) : null}
-					{/* above will only be for signed in people, now contained in mynavbar_signin.js */}
-					<NavDropdown title="Menu" id="basic-nav-dropdown">
-						{/* {loggedIn ? <NavDropdown.Item href="/upload">Upload View</NavDropdown.Item> : null} */}
+					<Nav className="mr-6 ml-auto" />
 
+					{/* search bar removed since search does not function yet */}
+
+					<NavDropdown alignRight title="Menu" id="basic-nav-dropdown">
 						{store.user.token != null && loggedIn ? (
 							<NavDropdown.Item>
 								<Link to="/profile">Profile</Link>
@@ -109,3 +103,10 @@ export const MyNavbar = () => {
 		</div>
 	);
 };
+
+//{store.user.token != null && loggedIn ? (
+//<Form inline>
+//<FormControl type="text" placeholder="Search" className="mr-sm-2" />
+//<Button variant="outline-success">Search</Button>
+//</Form>
+//) : null}

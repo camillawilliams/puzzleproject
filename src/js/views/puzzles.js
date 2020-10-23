@@ -10,7 +10,7 @@ export const Puzzles = props => {
 
 	return (
 		<div>
-			<div className="container d-flex justify-content-center">
+			<div className="justify-content-center">
 				<CardRow data={store.puzzleFetch} category="Category" />
 			</div>
 

@@ -27,7 +27,7 @@ export const SignIn = () => {
 	}
 
 	return (
-		<>
+		<div className="container">
 			{warning !== "" && (
 				<Alert className="text-center" variant="success">
 					{warning}
@@ -63,6 +63,6 @@ export const SignIn = () => {
 				<br />
 				<br />
 			</Form>
-		</>
+		</div>
 	);
 };

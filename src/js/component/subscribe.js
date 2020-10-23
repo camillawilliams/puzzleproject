@@ -8,12 +8,12 @@ export const Subscribe = props => {
 			<p>Welcome to Puzzle Swap! We are pleased to have you here. </p>
 			<b />
 			<p>
-				In order to make your experience with us a pleasant one we would like to let you know that a
-				subscription of $5.99/ month is required as well as an upload and shippment of a puzzle of your own.
+				In order to ship and receive puzzles, a subscription of $5.99/month is required as well as an upload and
+				shippment of a puzzle of your own.
 			</p>
 			<b />
 			<p>
-				Please subscribe in order to start you Puzzle Swap experience.
+				Please subscribe in order to start your Puzzle Swap experience.
 				<p />
 			</p>
 			<b />

@@ -13,13 +13,13 @@ export const Home = () => {
 	let history = useHistory();
 
 	return (
-		<div>
-			<div>
-				<HomeJumbo />
+		<>
+			<HomeJumbo />
+
+			<div className="container h-auto">
+				{/* <CardRow data={store.puzzleFetch} style={{ height: "200px" }} /> */}
+				<CardRow data={store.puzzleFetch} />
 			</div>
-			<div className="container">
-				<CardRow data={store.puzzleFetch} style={{ height: "200px" }} />
-			</div>
-		</div>
+		</>
 	);
 };
